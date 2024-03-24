@@ -70,9 +70,10 @@
 
 <div class="container">
 <h2>Create New Campaign</h2>
-<form action="/create_campaign" method="POST">
-    <label for="campaign_name">Campaign Name:</label><br>
-    <input type="text" id="campaign_name" name="campaign_name" required><br>
+<form action="." method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="campaignname">Campaign Name:</label><br>
+    <input type="text" id="campaignname" name="campaignname" required><br>
 
     <label for="objectives">Objectives:</label><br>
     <textarea id="objectives" name="objectives" rows="4" required></textarea><br>
@@ -85,6 +86,7 @@
 
     <input type="submit" value="Create Campaign">
 </form>
+</div>
 
 <h2>Campaign List</h2>
 <table>
@@ -94,27 +96,31 @@
         <th>Performance Metrics</th>
         <th>Actions</th>
     </tr>
+    
+    {% for campaign in new_campaign %}
     <tr>
-        <td>Campaign 1</td>
+        <td>{{ campaign.campaignname }}</td>
         <td>Active</td>
         <td>Click-through rate: 5%</td>
-        <td><a href="/edit_campaign/1">Edit</a> | <a href="/delete_campaign/1">Delete</a></td>
+        <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
     </tr>
-    <!-- Add more rows for other campaigns -->
+    <!-- Add more rows for other campaigns if needed -->
+    {% endfor %}
 </table>
+
 
 <h2>Analytics</h2>
 <p>View performance analytics for your campaigns:</p>
 <ul>
-    <li><a href="/analytics/campaign_1">Campaign 1 Analytics</a></li>
+    <li><a href="#">{{ campa }}</a></li>
     <!-- Add more links for other campaigns -->
 </ul>
 
 <h2>Settings</h2>
 <p>Manage your campaign management settings:</p>
 <ul>
-    <li><a href="/settings">General Settings</a></li>
-    <li><a href="/settings/notification">Notification Settings</a></li>
+    <li><a href="#">General Settings</a></li>
+    <li><a href="#">Notification Settings</a></li>
     <!-- Add more links for other settings -->
 </ul>
 </div>

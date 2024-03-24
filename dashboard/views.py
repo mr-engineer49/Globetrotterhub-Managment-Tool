@@ -13,7 +13,16 @@ def index_client(request):
     })
 
 
+@login_required
+def index_client_form(request):
+    if request.user.is_authenticated:
+        return render(request, 'dashboard.html', context={
 
+        })
+
+
+
+@login_required
 def profile_view(request):
     return render (request, 'profile.html', context={
 

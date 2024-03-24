@@ -1,0 +1,257 @@
+{% extends 'index.html' %}
+
+{% block user_authenticated %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 760px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    canvas {
+        margin-bottom: 20px;
+        width: auto; /* Make chart responsive */
+        height: auto; /* Make chart responsive */
+    }
+</style>
+    <!-- Navigation -->
+    <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+        // Chart 1: Bar Chart
+        var ctx1 = document.getElementById('barChart1').getContext('2d');
+        var barChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [65, 59, 80, 81, 56],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Line Chart
+        var ctx2 = document.getElementById('bubble').getContext('2d');
+        var lineChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [65, 59, 80, 81, 56],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Pie Chart
+        var ctx3 = document.getElementById('chartContainer').getContext('2d');
+        var pieChart = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+                datasets: [{
+                    label: 'My Dataset',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(153, 102, 255)'
+                    ]
+                }]
+            }
+        });
+    });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Chart 1: Bar Chart
+            var ctx1 = document.getElementById('barChart').getContext('2d');
+            var barChart = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May'],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [65, 59, 80, 81, 56],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+    
+            // Chart 2: Line Chart
+            var ctx2 = document.getElementById('lineChart').getContext('2d');
+            var lineChart = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May'],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [65, 59, 80, 81, 56],
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+    
+            // Chart 3: Pie Chart
+            var ctx3 = document.getElementById('pieChart').getContext('2d');
+            var pieChart = new Chart(ctx3, {
+                type: 'pie',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+                    datasets: [{
+                        label: 'My Dataset',
+                        data: [12, 19, 3, 5, 2],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(153, 102, 255)'
+                        ]
+                    }]
+                }
+            });
+        
+        
+        });
+    </script>
+
+<nav class="py-3 px-6 bg-gradient-to-r from-blue-500 to-green-500 dark:bg-gray-800">
+    <div class="flex justify-between items-center">
+        <div class="flex-shrink-0">
+            <a href="{% url 'dashboard:index' %}" class="text-white font-bold text-xl">GlobetrotterHub</a>
+        </div>
+        <div class="hidden md:flex items-center justify-center space-x-4 flex-grow">
+            <ul class="flex space-x-4">
+            </ul>
+        </div>
+        <div class="hidden md:flex items-center justify-center space-x-4 flex-grow flex justify-center">
+            <!-- Registration Form -->
+            <form class="flex space-x-6 text-center text-white" action="#">
+                <a href="{% url 'campaignmanagment:campaigns_form' %}">| Campaign Managment |</a>
+                <a href="{% url 'clientnmanagment:client_form' %}">| Client Managment |</a>
+                <a href="{% url 'offernmanagment:offers_form' %}">| Offer Managment |</a>
+                <a href="{% url 'bookingintegration:booking_form' %}">| Booking Integrations |</a>
+                <a href="{% url 'reportsandanalytics:reports_form' %}">| Reports & Analzysis |</a>
+            </form>
+        </div>
+            <a href="{% url 'dashboard:profile' %}"><span class="text-white inline flex">Hi!&emsp;<img width="24" height="24" src="https://img.icons8.com/material/24/user--v1.png" alt="user--v1"/>{{ request.user.username | title }}&emsp;|&emsp;</span></a>
+                <span><a class="text-white inline flex" href="{% url 'sms:sms_form' %}"><img width="24" height="24" src="https://img.icons8.com/material/24/chat--v4.png" alt="chat--v4"/>Chats</a></span>
+                &emsp;
+            <a class="text-white bg-red-600 px-4 y-2 center align-center flex rounded-full" href="{% url 'auth:logout' %}">Logout</a>
+        <div class="md:hidden">
+            <!-- Hamburger menu icon for mobile -->
+            <button class="text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+    
+    <body class="container">
+        {% block index %}
+        {% endblock %}
+        </body>
+        
+        <div class="container">
+            <h2>Dashboard</h2>
+            <!-- Chart 1: Bar Chart -->
+            <canvas id="barChart" width="150" height="50"></canvas>
+            <!-- Chart 2: Line Chart -->
+            <canvas id="lineChart" width="150" height="50"></canvas>
+            <!-- Chart 3: Pie Chart -->
+            <canvas id="pieChart" width="150" height="50"></canvas>
+            <!-- Add more charts and data components here -->
+        </div>
+
+        <div class="container">
+            <h2>Dashboard</h2>
+            <!-- Chart 1: Bar Chart -->
+            <canvas id="barChart1" width="150" height="50"></canvas>
+            <!-- Chart 2: Line Chart -->
+            <canvas id="bubble" width="150" height="50"></canvas>
+            <!-- Chart 3: Pie Chart -->
+            <canvas id="scatter" width="150" height="50"></canvas>
+            <!-- Add more charts and data components here -->
+        </div>
+
+    {% endblock %}
