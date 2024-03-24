@@ -11,3 +11,10 @@ def index_client(request):
         return render(request, 'index.html', context={
         
     })
+
+
+
+def profile_view(request):
+    return render (request, 'profile.html', context={
+
+    })

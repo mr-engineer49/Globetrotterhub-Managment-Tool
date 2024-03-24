@@ -2,7 +2,7 @@
 
 {% block user_authenticated %}
     <!-- Navigation -->
-    <nav class="py-4 px-6 bg-gradient-to-r from-blue-500 to-green-500 dark:bg-gray-800">
+    <nav class="py-1 px-6 bg-gradient-to-r from-blue-500 to-green-500 dark:bg-gray-800">
         <div class="flex justify-between items-center">
             <div class="flex-shrink-0">
                 <a href="{% url 'dashboard:index' %}" class="text-white font-bold text-xl">GlobetrotterHub</a>
@@ -21,10 +21,10 @@
                     <a href="{% url 'reportsandanalytics:reports_form' %}">Reports & Analzysis</a>
                 </form>
             </div>
-                <span class="text-center text-white">Hi! {{ request.user.username | title }}&emsp;|&emsp;</span>
-                    <span><a href="{% url 'sms:sms_form' %}">Chats</a></span>
+                <a href="{% url 'dashboard:profile' %}"><span class="text-white inline flex">Hi! <img width="30" height="30" src="https://img.icons8.com/color/48/person-male.png" alt="person-male"/> {{ request.user.username | title }}&emsp;|&emsp;</span></a>
+                    <span><a class="text-white inline flex" href="{% url 'sms:sms_form' %}"><img width="32" height="32" src="https://img.icons8.com/fluency/48/communication.png" alt="communication"/>Chats</a></span>
                     &emsp;
-                <a class="text-white text-xl bg-red-600 px-8 y-2 center align-center flex rounded-full" href="{% url 'auth:logout' %}">Logout</a>
+                <a class="text-white bg-red-600 px-4 y-2 center align-center flex rounded-full" href="{% url 'auth:logout' %}">Logout</a>
             <div class="md:hidden">
                 <!-- Hamburger menu icon for mobile -->
                 <button class="text-white focus:outline-none">

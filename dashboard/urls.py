@@ -22,4 +22,5 @@ app_name='dashboard'
 
 urlpatterns = [
     path('index_client/', views.index_client, name="index"),
+    path('profile/', views.profile_view, name="profile"),
 ]
