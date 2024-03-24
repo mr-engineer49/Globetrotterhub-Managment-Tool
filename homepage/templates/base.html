@@ -11,40 +11,47 @@
     
     <!-- Header -->
     <header class="py-4 px-6 bg-white dark:bg-gray-800 flex items-center justify-between">
-        <a href="/"><h1 class="text-2xl font-semibold text-gray-800 dark:text-white">Welcome to GlobetrotterHub</h1></a>
+        <a href="#"><h1 class="text-2xl font-semibold text-gray-800 dark:text-white">Welcome to GlobetrotterHub</h1></a>
         <p class="text-gray-600 dark:text-gray-300">Your all-in-one platform for managing travel campaigns and offers</p>
     </header>
     
     <!-- Navigation -->
-    <nav class="py-4 px-6 bg-gradient-to-r from-purple-400 to-pink-500 dark:bg-gray-800">
-        <div class="flex justify-between items-center">
-            <div class="flex-shrink-0">
-                <a href="/" class="text-white font-bold text-xl">GlobetrotterHub</a>
-            </div>
-            <div class="hidden md:flex items-center justify-center space-x-4 flex-grow">
-                <ul class="flex space-x-4">
-                    <li><a href="/" class="text-white hover:text-gray-200">Home</a></li>
-                    <li><a href="{% url 'homepage:about_us' %}" class="text-white hover:text-gray-200">About Us</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-200">Services</a></li>
-                    <li><a href="{% url 'homepage:contact' %}" class="text-white hover:text-gray-200">Contact</a></li>
-                </ul>
-            </div>
-            <div class="flex items-center">
-                <!-- Registration Form -->
-                <form action="{% url 'auth:register_form' %}">
-                    <button type="submit" class="text-white hover:text-gray-200 focus:outline-none">Register</button>
-                </form>
-            </div>
-            <div class="md:hidden">
-                <!-- Hamburger menu icon for mobile -->
-                <button class="text-white focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+    {%if request.user.is_authenticated %}
+    {% block user_authenticated %}
+    {% endblock%}
+{%else%}
+<nav class="py-4 px-6 bg-gradient-to-r from-blue-500 to-green-500 dark:bg-gray-800">
+    <div class="flex justify-between items-center">
+        <div class="flex-shrink-0">
+            <a href="/" class="text-white font-bold text-xl">GlobetrotterHub</a>
         </div>
-    </nav>
+        <div class="hidden md:flex items-center justify-center space-x-4 flex-grow">
+            <ul class="flex space-x-4">
+                <li><a href="/" class="text-white hover:text-gray-200">Home</a></li>
+                <li><a href="{% url 'homepage:about_us' %}" class="text-white hover:text-gray-200">About Us</a></li>
+                <li><a href="#" class="text-white hover:text-gray-200">Services</a></li>
+                <li><a href="{% url 'homepage:contact' %}" class="text-white hover:text-gray-200">Contact</a></li>
+            </ul>
+        </div>
+        <div class="flex items-center">
+            <!-- Registration Form -->
+            <form class="bg-gradient-to-r from-purple-400 to-pink-500 dark:bg-gray-800 rounded-full px-12">
+                <a class="text-white text-xl" href="{% url 'auth:login_form' %}">Login</a>
+                &emsp;/&emsp;
+                <a class="text-white text-xl" href="{% url 'auth:register_form' %}">Register</a>
+            </form>
+        </div>
+        <div class="md:hidden">
+            <!-- Hamburger menu icon for mobile -->
+            <button class="text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+{%endif%}
     
     
 

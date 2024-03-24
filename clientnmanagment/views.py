@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
+
+def client_managment_view(request):
+    return render (request, 'client.html', context={
+        
+    } )

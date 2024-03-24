@@ -1,0 +1,124 @@
+{% extends 'index.html' %}
+
+
+{% block index %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #333;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Create New Campaign</h2>
+<form action="/create_campaign" method="POST">
+    <label for="campaign_name">Campaign Name:</label><br>
+    <input type="text" id="campaign_name" name="campaign_name" required><br>
+
+    <label for="objectives">Objectives:</label><br>
+    <textarea id="objectives" name="objectives" rows="4" required></textarea><br>
+
+    <label for="budget">Budget:</label><br>
+    <input type="text" id="budget" name="budget" required><br>
+
+    <label for="target_audience">Target Audience:</label><br>
+    <input type="text" id="target_audience" name="target_audience" required><br>
+
+    <input type="submit" value="Create Campaign">
+</form>
+
+<h2>Campaign List</h2>
+<table>
+    <tr>
+        <th>Campaign Name</th>
+        <th>Status</th>
+        <th>Performance Metrics</th>
+        <th>Actions</th>
+    </tr>
+    <tr>
+        <td>Campaign 1</td>
+        <td>Active</td>
+        <td>Click-through rate: 5%</td>
+        <td><a href="/edit_campaign/1">Edit</a> | <a href="/delete_campaign/1">Delete</a></td>
+    </tr>
+    <!-- Add more rows for other campaigns -->
+</table>
+
+<h2>Analytics</h2>
+<p>View performance analytics for your campaigns:</p>
+<ul>
+    <li><a href="/analytics/campaign_1">Campaign 1 Analytics</a></li>
+    <!-- Add more links for other campaigns -->
+</ul>
+
+<h2>Settings</h2>
+<p>Manage your campaign management settings:</p>
+<ul>
+    <li><a href="/settings">General Settings</a></li>
+    <li><a href="/settings/notification">Notification Settings</a></li>
+    <!-- Add more links for other settings -->
+</ul>
+</div>
+
+</body>
+
+{% endblock %}

@@ -16,12 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 from . import views
+from globetrotterhub import settings
+
 
 app_name='homepage'
+
+
 
 urlpatterns = [
     path('about_us/', views.about_us, name="about_us"),
     path('contact/', views.contact, name="contact"),
     path('', views.homepage, name="homepage"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

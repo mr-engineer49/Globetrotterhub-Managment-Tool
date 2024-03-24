@@ -16,9 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from globetrotterhub import settings
+from django.conf.urls.static import static
+
+
 
 urlpatterns = [
     path('', include('homepage.urls')),
     path('auth/', include('registration.urls')),
+    path('client/', include('dashboard.urls')),
+    path('client/index_client/', include('campaignmanagment.urls')),
+    path('client/index_client/', include('clientnmanagment.urls')),
+    path('client/index_client/', include('offernmanagment.urls')),
+    path('client/index_client/', include('reportsandanalytics.urls')),
+    path('client/index_client/', include('bookingintegration.urls')),
+    path('client/index_client/', include('sms.urls')),
     path('admin/', admin.site.urls),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

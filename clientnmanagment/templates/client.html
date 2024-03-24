@@ -1,0 +1,104 @@
+{% extends 'index.html' %}
+
+
+{% block index %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #333;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Client List</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Booking History</th>
+        <th>Communication Logs</th>
+        <th>Actions</th>
+    </tr>
+    <tr>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+        <td>123-456-7890</td>
+        <td><a href="/booking_history/1">View History</a></td>
+        <td><a href="/communication_logs/1">View Logs</a></td>
+        <td><a href="/edit_client/1">Edit</a> | <a href="/delete_client/1">Delete</a></td>
+    </tr>
+    <!-- Add more rows for other clients -->
+</table>
+
+<h2>Add New Client</h2>
+<form action="/add_client" method="POST">
+    <label for="client_name">Name:</label><br>
+    <input type="text" id="client_name" name="client_name"><br>
+
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email"><br>
+
+    <label for="phone">Phone:</label><br>
+    <input type="text" id="phone" name="phone"><br>
+
+    <input type="submit" value="Add Client">
+</form>
+</div>
+
+</body>
+
+{% endblock %}

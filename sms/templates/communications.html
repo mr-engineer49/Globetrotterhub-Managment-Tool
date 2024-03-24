@@ -1,0 +1,113 @@
+{% extends 'index.html' %}
+
+
+{% block index %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #333;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .message {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .comment {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Messaging Center</h2>
+<!-- Messaging Form -->
+<form action="/send_message" method="POST">
+    <label for="recipient">Recipient:</label><br>
+    <input type="text" id="recipient" name="recipient" placeholder="Enter recipient"><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" placeholder="Type your message here"></textarea><br>
+
+    <input type="submit" value="Send Message">
+</form>
+
+<!-- Messaging Inbox -->
+<div class="messages">
+    <div class="message">
+        <strong>From: </strong> Sender Name<br>
+        <strong>Date: </strong> January 1, 2025<br>
+        <strong>Subject: </strong> Example Subject<br>
+        <p>Example message content...</p>
+    </div>
+    <!-- Add more message divs for other messages -->
+</div>
+
+<h2>Commenting</h2>
+<!-- Commenting Form -->
+<form action="/add_comment" method="POST">
+    <label for="comment">Add Comment:</label><br>
+    <textarea id="comment" name="comment" rows="4" placeholder="Add your comment here"></textarea><br>
+
+    <input type="submit" value="Add Comment">
+</form>
+
+<!-- Comments Section -->
+<div class="comments">
+    <div class="comment">
+        <strong>By: </strong> User Name<br>
+        <strong>Date: </strong> January 1, 2025<br>
+        <p>Example comment content...</p>
+    </div>
+    <!-- Add more comment divs for other comments -->
+</div>
+</div>
+
+</body>
+
+{% endblock %}

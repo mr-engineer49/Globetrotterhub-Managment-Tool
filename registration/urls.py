@@ -21,6 +21,7 @@ from . import views
 app_name='auth'
 
 urlpatterns = [
-    path('register_form/', views.registration, name="register_form"),
-    path('login_form/', views.login, name="login_form"),
+    path('register_form/', views.registration_view, name="register_form"),
+    path('login_form/', views.login_view, name="login_form"),
+    path('', views.logout_view, name="logout"),
 ]
