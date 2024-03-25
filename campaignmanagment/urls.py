@@ -22,4 +22,5 @@ app_name='campaignmanagment'
 
 urlpatterns = [
     path('campaigns_form/', views.campaigns_view, name="campaigns_form"),
+    path('campaigns_form/new/', views.new_campaign, name="new_campaign"),
 ]

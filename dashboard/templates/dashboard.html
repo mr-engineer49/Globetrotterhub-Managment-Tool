@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     </script>
 
-<nav class="py-3 px-6 bg-gradient-to-r from-blue-500 to-green-500 dark:bg-gray-800">
+<nav class="py-3 px-6 bg-gradient-to-r from-blue-700 to-green-700 dark:bg-gray-800">
     <div class="flex justify-between items-center">
         <div class="flex-shrink-0">
             <a href="{% url 'dashboard:index' %}" class="text-white font-bold text-xl">GlobetrotterHub</a>
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <a href="{% url 'dashboard:profile' %}"><span class="text-white inline flex">Hi!&emsp;<img width="24" height="24" src="https://img.icons8.com/material/24/user--v1.png" alt="user--v1"/>{{ request.user.username | title }}&emsp;|&emsp;</span></a>
                 <span><a class="text-white inline flex" href="{% url 'sms:sms_form' %}"><img width="24" height="24" src="https://img.icons8.com/material/24/chat--v4.png" alt="chat--v4"/>Chats</a></span>
                 &emsp;
-            <a class="text-white bg-red-600 px-4 y-2 center align-center flex rounded-full" href="{% url 'auth:logout' %}">Logout</a>
+            <a class="text-white bg-red-600 px-4 y-2 center align-center flex rounded-full text" href="{% url 'auth:logout' %}">Logout</a>
         <div class="md:hidden">
             <!-- Hamburger menu icon for mobile -->
             <button class="text-white focus:outline-none">

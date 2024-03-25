@@ -28,10 +28,14 @@ class NewCampaignModel(models.Model):
     campaignname = models.CharField(blank=True, max_length=50)
     objectives = models.TextField(blank=True, max_length=10000)
     budget = models.FloatField(blank=True, max_length=100000000)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    age_group = models.CharField(max_length=1, choices=AGE_GROUP_CHOICES)
-    location = models.CharField(max_length=1, choices=LOCATION_CHOICES)
-    platform = models.CharField(max_length=1, choices=PLATFORM_CHOICES)
+    gender = models.BooleanField(default=False, blank=True)  # True for Male, False for Female
+    age = models.BooleanField(default=False, blank=True)     # True for Teen, False for Adult/Old
+    location = models.BooleanField(default=False, blank=True)   # True for Europe, False for USA/Asia
+    start_date = models.DateTimeField(auto_now_add=True, null=True)
+    end_date = models.DateTimeField(auto_now_add=True, null=True)
+
+
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.campaignname
