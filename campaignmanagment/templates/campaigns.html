@@ -83,6 +83,14 @@
     
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-2">
                 <label for="target_audience">Target Audience:</label><br>
+
+                <div>
+                    <label for="status">Status:</label><br>
+                    <input type="checkbox" id="active" name="status" value="A">
+                    <label for="active">Active</label><br>
+                    <input type="checkbox" id="pending" name="status" value="P">
+                    <label for="pending">Pending</label><br>
+                </div>
             
                 <div>
                     <label for="gender">Gender:</label><br>
@@ -136,6 +144,7 @@
         </form>
     
         <h2>Campaign List</h2>
+
         <table>
             <tr>
                 <th>Campaign Name</th>
@@ -146,12 +155,19 @@
             
             {% for campaign in new_campaign %}
             <tr>
-                <td>{{ campaign.campaignname }}</td>
-                <td>Active</td>
+                <td><a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}">{{ campaign.campaignname }}</a></td>
+                <td class="{% if campaign.is_active %}active{% elif campaign.is_pending %}pending{% else %}inactive{% endif %}">
+                    {% if campaign.is_active %}
+                        <span style="background-color: green; color: white; padding: 3px 6px; border-radius: 3px;">Active</span>
+                    {% elif campaign.is_pending %}
+                        <span style="background-color: orange; color: black; padding: 3px 6px; border-radius: 3px;">Pending</span>
+                    {% else %}
+                        <span style="background-color: red; color: white; padding: 3px 6px; border-radius: 3px;">Inactive</span>
+                    {% endif %}
+                </td>
                 <td>Click-through rate: 5%</td>
                 <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
             </tr>
-            <!-- Add more rows for other campaigns if needed -->
             {% endfor %}
         </table>
 
@@ -174,5 +190,6 @@
     </div>
 
 </body>
+
 
 {% endblock %}

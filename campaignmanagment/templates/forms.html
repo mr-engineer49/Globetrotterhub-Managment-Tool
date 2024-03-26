@@ -10,8 +10,8 @@
     {% csrf_token %}
 
     <div class="grid grid-cols-4 space-x-6 mt-4 py-4 gap-4 flex flex-1">
-        {{ new_campaign_form.as_div }}
-        {% for fields in new_campaign_form %}
+        {{ edit_campaign_form.as_div }}
+        {% for fields in edit_campaign_form %}
         {{ fields }}
         {% endfor %}
     </div>

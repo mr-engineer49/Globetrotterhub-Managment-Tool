@@ -25,12 +25,12 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('auth/', include('registration.urls')),
     path('client/', include('dashboard.urls')),
-    path('client/index_client/', include('campaignmanagment.urls')),
-    path('client/index_client/', include('clientnmanagment.urls')),
-    path('client/index_client/', include('offernmanagment.urls')),
-    path('client/index_client/', include('reportsandanalytics.urls')),
-    path('client/index_client/', include('bookingintegration.urls')),
-    path('client/index_client/', include('sms.urls')),
+    path('client/campaign_managment/', include('campaignmanagment.urls')),
+    path('client/client_managment/', include('clientnmanagment.urls')),
+    path('client/offer_managment/', include('offernmanagment.urls')),
+    path('client/reports_and_analytics/', include('reportsandanalytics.urls')),
+    path('client/booking_integration/', include('bookingintegration.urls')),
+    path('client/conversations/', include('sms.urls')),
     path('admin/', admin.site.urls),
 ]
 
