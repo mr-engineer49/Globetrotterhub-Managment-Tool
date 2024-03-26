@@ -1,9 +1,92 @@
 {% extends 'index.html' %}
 
-
 {% block index %}
 
 <style>
+    /* Add your custom styles here */
+
+    /* Example grid layout */
+    .campaign-card {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .campaign-card h3 {
+        color: #333;
+        margin-top: 0;
+    }
+
+    .campaign-card p {
+        margin-bottom: 10px;
+    }
+
+    .campaign-card .status {
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 3px;
+    }
+
+    .campaign-card .active {
+        background-color: green;
+        color: white;
+    }
+
+    .campaign-card .pending {
+        background-color: orange;
+        color: black;
+    }
+
+    .campaign-card .inactive {
+        background-color: red;
+        color: white;
+    }
+
+    .campaign-actions {
+        margin-top: 10px;
+    }
+
+    .campaign-actions a {
+        text-decoration: none;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    /* Form styles */
+    .create-campaign-form {
+        margin-top: 40px;
+    }
+
+    .create-campaign-form label {
+        font-weight: bold;
+    }
+
+    .create-campaign-form input[type="text"],
+    .create-campaign-form textarea,
+    .create-campaign-form input[type="datetime-local"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .create-campaign-form input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .create-campaign-form input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -64,9 +147,43 @@
     tr:hover {
         background-color: #ddd;
     }
+
 </style>
-</head>
+
 <body>
+
+
+    <div class="container">
+        <h2>Campaign List</h2>
+    
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {% for campaign in new_campaign %}
+            <div class="campaign-card">
+                <a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}">
+                <h3>{{ campaign.campaignname }}</h3>
+                <hr>
+                <br>
+                <p><strong>Status:</strong> <span class="status {% if campaign.is_active %}active{% elif campaign.is_pending %}pending{% else %}inactive{% endif %}">
+                        {% if campaign.is_active %}
+                            Active
+                        {% elif campaign.is_pending %}
+                            Pending
+                        {% else %}
+                            Inactive
+                        {% endif %}
+                    </span>
+                </p>
+                <p><strong>Performance Metrics:</strong> Click-through rate: 5%</p>
+            </a>
+                <div class="campaign-actions">
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
 
     <div class="container">
         <h2>Create New Campaign</h2>
@@ -142,54 +259,24 @@
             
             <input type="submit" value="Create Campaign">
         </form>
-    
-        <h2>Campaign List</h2>
 
-        <table>
-            <tr>
-                <th>Campaign Name</th>
-                <th>Status</th>
-                <th>Performance Metrics</th>
-                <th>Actions</th>
-            </tr>
-            
-            {% for campaign in new_campaign %}
-            <tr>
-                <td><a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}">{{ campaign.campaignname }}</a></td>
-                <td class="{% if campaign.is_active %}active{% elif campaign.is_pending %}pending{% else %}inactive{% endif %}">
-                    {% if campaign.is_active %}
-                        <span style="background-color: green; color: white; padding: 3px 6px; border-radius: 3px;">Active</span>
-                    {% elif campaign.is_pending %}
-                        <span style="background-color: orange; color: black; padding: 3px 6px; border-radius: 3px;">Pending</span>
-                    {% else %}
-                        <span style="background-color: red; color: white; padding: 3px 6px; border-radius: 3px;">Inactive</span>
-                    {% endif %}
-                </td>
-                <td>Click-through rate: 5%</td>
-                <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-            </tr>
-            {% endfor %}
-        </table>
 
-        <h2>Analytics</h2>
-<p>View performance analytics for your campaigns:</p>
-<ul>
-    <li><a href="#">{{ campa }}</a></li>
-    <!-- Add more links for other campaigns -->
-</ul>
+    <h2>Analytics</h2>
+    <p>View performance analytics for your campaigns:</p>
+    <ul>
+        <li><a href="#">{{ campa }}</a></li>
+        <!-- Add more links for other campaigns -->
+    </ul>
 
-<h2>Settings</h2>
-<p>Manage your campaign management settings:</p>
-<ul>
-    <li><a href="#">General Settings</a></li>
-    <li><a href="#">Notification Settings</a></li>
-    <!-- Add more links for other settings -->
-</ul>
+    <h2>Settings</h2>
+    <p>Manage your campaign management settings:</p>
+    <ul>
+        <li><a href="#">General Settings</a></li>
+        <li><a href="#">Notification Settings</a></li>
+        <!-- Add more links for other settings -->
+    </ul>
 </div>
 
-    </div>
-
 </body>
-
 
 {% endblock %}

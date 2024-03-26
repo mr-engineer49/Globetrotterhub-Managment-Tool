@@ -3,75 +3,53 @@
 {% block title %}Campaign Detail{% endblock %}
 
 {% block content %}
-
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
+    /* Custom styles for campaign detail */
+    .campaign-detail {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
     }
-    .container {
-        max-width: 960px;
-        margin: 20px auto;
-        padding: 20px;
+
+    .campaign-detail .section {
         background-color: #fff;
+        padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    h2 {
+
+    .campaign-detail h3 {
         color: #333;
     }
-    form {
-        margin-bottom: 20px;
+
+    .campaign-detail p {
+        margin-bottom: 10px;
     }
-    label {
-        font-weight: bold;
+
+    .actions {
+        margin-top: 20px;
     }
-    input[type="text"], textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-    input[type="submit"] {
+
+    .actions .btn-primary {
         background-color: #4CAF50;
         color: white;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        text-decoration: none;
     }
-    input[type="submit"]:hover {
+
+    .actions .btn-primary:hover {
         background-color: #45a049;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-    tr:hover {
-        background-color: #ddd;
     }
 </style>
 
 <div class="container">
     <h1>Campaign Detail</h1>
     <hr>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="campaign-detail">
+        <div class="section">
             <h3>Basic Information</h3>
             <p><strong>Name:</strong> {{ newcampaign.campaignname }}</p>
             <p><strong>Objectives:</strong> {{ newcampaign.objectives }}</p>
@@ -87,7 +65,7 @@
             <p><strong>Start Date:</strong> {{ newcampaign.start_date }}</p>
             <p><strong>End Date:</strong> {{ newcampaign.end_date }}</p>
         </div>
-        <div class="col-md-6">
+        <div class="section">
             <h3>Target Audience</h3>
             <p><strong>Gender:</strong> {% if newcampaign.gender == 'M' %} Male {% elif newcampaign.gender == 'F' %} Female {% else %} All Genders {% endif %}</p>
             <p><strong>Age:</strong> {% if newcampaign.age == 'under_18' %} Under 18 {% elif newcampaign.age == '18_35' %} 18-35 {% elif newcampaign.age == '36_50' %} 36-50 {% elif newcampaign.age == 'over_50' %} Over 50 {% else %} All Ages {% endif %}</p>
@@ -96,7 +74,7 @@
         </div>
     </div>
     <hr>
-    <div>
+    <div class="actions">
         <h3>Actions</h3>
         <a href="#" class="btn btn-primary">Edit Campaign</a>
         <!-- Add more actions/buttons as needed -->
