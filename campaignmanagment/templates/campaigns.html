@@ -157,7 +157,7 @@
         <h2>Campaign List</h2>
     
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {% for campaign in new_campaign %}
+            {% for campaign in campaigns %}
             <div class="campaign-card">
                 <a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}">
                 <h3>{{ campaign.campaignname }}</h3>
@@ -176,8 +176,8 @@
                 <p><strong>Performance Metrics:</strong> Click-through rate: 5%</p>
             </a>
                 <div class="campaign-actions">
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+                    <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}">Edit</a>
+                    <a href="{% url 'campaignmanagment:delete_campaign' campaign.id %}">Delete</a>
                 </div>
             </div>
             {% endfor %}

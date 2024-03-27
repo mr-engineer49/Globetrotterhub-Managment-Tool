@@ -21,5 +21,5 @@ from . import views
 app_name='clientnmanagment'
 
 urlpatterns = [
-    path('client_managment/', views.client_managment_view, name="client_form"),
+    path('', views.client_managment_view, name="client_form"),
 ]

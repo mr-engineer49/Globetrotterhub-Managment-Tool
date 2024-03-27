@@ -51,34 +51,36 @@
     <div class="campaign-detail">
         <div class="section">
             <h3>Basic Information</h3>
-            <p><strong>Name:</strong> {{ newcampaign.campaignname }}</p>
-            <p><strong>Objectives:</strong> {{ newcampaign.objectives }}</p>
-            <p><strong>Budget:</strong> ${{ newcampaign.budget }}</p>
-            <p><strong>Status:</strong> {% if newcampaign.is_active %}
+            <p><strong>Name:</strong> {{ campaign.campaignname }}</p>
+            <p><strong>Objectives:</strong> {{ campaign.objectives }}</p>
+            <p><strong>Budget:</strong> ${{ campaign.budget }}</p>
+            <p><strong>Status:</strong> {% if campaign.is_active %}
                                         Active
-                                    {% elif newcampaign.is_pending %}
+                                    {% elif campaign.is_pending %}
                                         Pending
                                     {% else %}
                                         Inactive
                                     {% endif %}
             </p>
-            <p><strong>Start Date:</strong> {{ newcampaign.start_date }}</p>
-            <p><strong>End Date:</strong> {{ newcampaign.end_date }}</p>
+            <p><strong>Start Date:</strong> {{ campaign.start_date }}</p>
+            <p><strong>End Date:</strong> {{ campaign.end_date }}</p>
         </div>
         <div class="section">
             <h3>Target Audience</h3>
-            <p><strong>Gender:</strong> {% if newcampaign.gender == 'M' %} Male {% elif newcampaign.gender == 'F' %} Female {% else %} All Genders {% endif %}</p>
-            <p><strong>Age:</strong> {% if newcampaign.age == 'under_18' %} Under 18 {% elif newcampaign.age == '18_35' %} 18-35 {% elif newcampaign.age == '36_50' %} 36-50 {% elif newcampaign.age == 'over_50' %} Over 50 {% else %} All Ages {% endif %}</p>
-            <p><strong>Location:</strong> {{ newcampaign.location }}</p>
-            <p><strong>Interests:</strong> {{ newcampaign.interests }}</p>
+            <p><strong>Gender:</strong> {% if campaign.gender == 'M' %} Male {% elif campaign.gender == 'F' %} Female {% else %} All Genders {% endif %}</p>
+            <p><strong>Age:</strong> {% if campaign.age == 'under_18' %} Under 18 {% elif campaign.age == '18_35' %} 18-35 {% elif campaign.age == '36_50' %} 36-50 {% elif campaign.age == 'over_50' %} Over 50 {% else %} All Ages {% endif %}</p>
+            <p><strong>Location:</strong> {{ campaign.location }}</p>
+            <p><strong>Interests:</strong> {{ campaign.interests }}</p>
         </div>
     </div>
     <hr>
+
     <div class="actions">
         <h3>Actions</h3>
-        <a href="#" class="btn btn-primary">Edit Campaign</a>
+        <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}" class="btn btn-primary">Edit Campaign</a>
         <!-- Add more actions/buttons as needed -->
     </div>
+
 </div>
 
 {% endblock %}

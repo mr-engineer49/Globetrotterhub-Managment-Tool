@@ -24,13 +24,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include('homepage.urls')),
     path('auth/', include('registration.urls')),
-    path('client/', include('dashboard.urls')),
-    path('client/campaign_managment/', include('campaignmanagment.urls')),
-    path('client/client_managment/', include('clientnmanagment.urls')),
-    path('client/offer_managment/', include('offernmanagment.urls')),
-    path('client/reports_and_analytics/', include('reportsandanalytics.urls')),
-    path('client/booking_integration/', include('bookingintegration.urls')),
-    path('client/conversations/', include('sms.urls')),
+    path('admin-page/', include('dashboard.urls')),
+    path('admin-page/campaign-managment/', include('campaignmanagment.urls')),
+    path('admin-page/client-managment/', include('clientnmanagment.urls')),
+    path('admin-page/offer-managment/', include('offernmanagment.urls')),
+    path('admin-page/reports-and-analytics/', include('reportsandanalytics.urls')),
+    path('admin-page/booking-integration/', include('bookingintegration.urls')),
+    path('admin-page/conversations/', include('sms.urls')),
     path('admin/', admin.site.urls),
 ]
 

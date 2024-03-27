@@ -29,6 +29,7 @@ class NewCampaignModel(models.Model):
         ('T', 'TikTok'),
     ]
 
+    default_user_id = User.objects.first().id
 
     campaignname = models.CharField(blank=True, max_length=50)
     objectives = models.TextField(blank=True, max_length=10000)
@@ -38,7 +39,7 @@ class NewCampaignModel(models.Model):
     location = models.BooleanField(default=False, blank=True)   # True for Europe, False for USA/Asia
     start_date = models.DateTimeField(auto_now_add=True, null=True)
     end_date = models.DateTimeField(auto_now_add=True, null=True)
-    published_by = models.ForeignKey(User, related_name='campaigns_author', on_delete=models.CASCADE, default=None)
+    published_by = models.ForeignKey(User, related_name='campaigns_author', on_delete=models.CASCADE, default=default_user_id)
     is_active = models.BooleanField(default=False)
     is_pending = models.BooleanField(default=True)
 

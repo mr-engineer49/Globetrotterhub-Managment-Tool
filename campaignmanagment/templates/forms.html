@@ -1,21 +1,25 @@
-{% extends 'campaigns.html' %}
-
-{% block title %}{{ title }}{% endblock %}
+{% extends 'index.html' %}
 
 
-{% block forms %}
-<h1>{{ title }}</h1>
 
-<form class="" method="post" action="." enctype="multipart/form-data">
-    {% csrf_token %}
+{% block title %}Edit Campaign{% endblock %}
 
-    <div class="grid grid-cols-4 space-x-6 mt-4 py-4 gap-4 flex flex-1">
-        {{ edit_campaign_form.as_div }}
-        {% for fields in edit_campaign_form %}
-        {{ fields }}
-        {% endfor %}
-    </div>
 
-        <button class="justify-center align-center text-center py-4 px-8 text-lg bg-green-500 hover:bg-green-200 rounded-xl">Post</button>  
-</form>
+
+{% block content %}
+
+<div class="container mx-auto">
+    <h1 class="text-3xl font-bold mb-4 text-white">Edit Campaign</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="grid grid-cols-4 gap-4 text-white">
+            {{ edit_campaign_form.as_div }}
+        </div>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Submit</button>
+    </form>
+</div>
+
 {% endblock %}
