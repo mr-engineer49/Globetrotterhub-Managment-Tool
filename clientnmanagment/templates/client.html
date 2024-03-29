@@ -11,7 +11,7 @@
         background-color: #f0f0f0;
     }
     .container {
-        max-width: 960px;
+        max-width: auto;
         margin: 20px auto;
         padding: 20px;
         background-color: #fff;
@@ -66,37 +66,56 @@
 <h2>Client List</h2>
 <table>
     <tr>
-        <th>Name</th>
+        <th>Full Name</th>
         <th>Email</th>
         <th>Phone</th>
+        <th>Booking Dates (Start - End)</th>
         <th>Booking History</th>
-        <th>Communication Logs</th>
-        <th>Actions</th>
+        <th>Type</th>
+        <th>Place</th>
+        <th>Price</th>
+        <th>Phase</th>
     </tr>
-    <tr>
-        <td>John Doe</td>
-        <td>john@example.com</td>
-        <td>123-456-7890</td>
-        <td><a href="/booking_history/1">View History</a></td>
-        <td><a href="/communication_logs/1">View Logs</a></td>
-        <td><a href="/edit_client/1">Edit</a> | <a href="/delete_client/1">Delete</a></td>
+    {% for client in clients %}
+    <tr class="">
+        <td class="flex">{{ client.fullname }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.phone_no }}</td>
+        <td>{{ client.start_date_client }} - {{ client.end_date_client }}</td>
+        <td class="underline"><a href="#">See History</a></td>
+        <td><p class="booking_type {% if client.booking_type == 'H' %}Hotel{% else %}Vacations{% endif %}">
+            {% if client.booking_type == 'H' %}
+                <span class="bg-blue-700 text-white w-20 flex rounded-full justify-center">Hotel</span>
+            {% elif client.booking_type == 'V' %}
+            <span class="bg-orange-800 text-white w-20 flex rounded-full justify-center">Vacations</span>
+            {% elif client.booking_type == 'P' %}
+            <span class="bg-green-800 text-white w-20 flex rounded-full justify-center">Places</span>
+            {% else %}
+            <span class="bg-red-600 text-white w-20 flex rounded-full justify-center">NULL</span>
+            {% endif %}
+        </p></td>
+        <td>{{ client.place }}</td>
+        <td>$ {{ client.price }}</td>
+        <td><p class="phase {% if client.phase == 'C' %}Created{% else %}Running{% endif %}">
+            {% if client.phase == 'C' %}
+                <span class="bg-blue-700 text-white w-20 flex rounded-full justify-center">Created</span>
+                {% elif client.phase == 'R' %}
+                <span class="bg-green-700 text-white w-32 flex rounded-full justify-center">Running/Active</span>
+                {% elif client.booking_type not in 'HVP' %}
+                <span class="bg-red-600 text-white w-20 flex rounded-full justify-center">Failed</span>
+            {% else %}
+            <span class="bg-gray-800 text-white w-20 flex rounded-full justify-center">Finished</span>
+            {% endif %}
+        </p></td>
     </tr>
+    {% endfor %}
     <!-- Add more rows for other clients -->
 </table>
 
-<h2>Add New Client</h2>
-<form action="/add_client" method="POST">
-    <label for="client_name">Name:</label><br>
-    <input type="text" id="client_name" name="client_name"><br>
+<br>
 
-    <label for="email">Email:</label><br>
-    <input type="text" id="email" name="email"><br>
+    <a class="" type="submit" href="{% url 'clientnmanagment:new_client' %}" value="Add Client">Add New Client</a>
 
-    <label for="phone">Phone:</label><br>
-    <input type="text" id="phone" name="phone"><br>
-
-    <input type="submit" value="Add Client">
-</form>
 </div>
 
 </body>

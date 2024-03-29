@@ -2,20 +2,20 @@
 
 
 
-{% block title %}Edit Campaign{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 
 
 {% block content %}
 
 <div class="container mx-auto">
-    <h1 class="text-3xl font-bold mb-4 text-white">Edit Campaign</h1>
+    <h1 class="text-3xl font-bold mb-4 text-white">{{ title }}</h1>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         
         <div class="grid grid-cols-4 gap-4 text-white">
-            {{ edit_campaign_form.as_div }}
+            {{ campaign_form.as_div }}
         </div>
 
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Submit</button>

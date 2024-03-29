@@ -12,9 +12,9 @@
                 <ul class="flex space-x-4">
                 </ul>
             </div>
-            <div class="hidden md:flex items-center justify-center space-x-4 flex-grow flex justify-center">
+            <div class="">
                 <!-- Registration Form -->
-                <div class="flex space-x-4 text-center text-white" action="#">
+                <div class="flex text-center justify-center flex-menu text-white grid grid-cols-5 text-bold" action="#">
                     <a href="{% url 'campaignmanagment:campaigns_form' %}">| Campaign Managment |</a>
                     <a href="{% url 'clientnmanagment:client_form' %}">| Client Managment |</a>
                     <a href="{% url 'offernmanagment:offers_form' %}">| Offer Managment |</a>
@@ -22,6 +22,7 @@
                     <a href="{% url 'reportsandanalytics:reports_form' %}">| Reports & Analzysis |</a>
                 </div>
             </div>
+            &emsp;
                 <a href="{% url 'dashboard:profile' %}"><span class="text-white inline flex">Hi!&emsp;<img width="24" height="24" src="https://img.icons8.com/material/24/user--v1.png" alt="user--v1"/>{{ request.user.username | title }}&emsp;|&emsp;</span></a>
                     <span><a class="text-white inline flex" href="{% url 'sms:sms_form' %}"><img width="24" height="24" src="https://img.icons8.com/material/24/chat--v4.png" alt="chat--v4"/>Chats</a></span>
                     &emsp;
