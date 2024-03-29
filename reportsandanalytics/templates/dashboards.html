@@ -1,92 +1,161 @@
 {% extends 'index.html' %}
 
-
 {% block index %}
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
-    .container {
-        max-width: 960px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-        color: #333;
-    }
-    .dashboard {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
-        margin-top: 20px;
-    }
-    .metrics {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .notifications {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .activity {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .tools {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .personalization {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-</style>
-</head>
-<body>
+<body class="text-white">
 
-<div class="container">
-<h2>Dashboard</h2>
-<div class="dashboard">
-    <div class="metrics">
-        <h3>Metrics</h3>
-        <!-- Metrics content here -->
-    </div>
-    <div class="notifications">
-        <h3>Notifications</h3>
-        <!-- Notifications content here -->
-    </div>
-    <div class="activity">
-        <h3>Recent Activity</h3>
-        <!-- Recent activity content here -->
-    </div>
-    <div class="tools">
-        <h3>Quick Access</h3>
-        <!-- Quick access tools content here -->
-    </div>
-    <div class="personalization">
-        <h3>Personalization</h3>
-        <!-- Personalization options content here -->
+<div class="container mx-auto mt-8 text-white">
+    <h2 class="text-2xl font-semibold mb-8">Dashboard</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 text-white">
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg text-white">
+            <h3 class="text-lg font-semibold mb-4">Metrics</h3>
+            <canvas id="metricsChart" class="mb-4"></canvas>
+            <ul class="list-disc ml-6">
+                <li>Total Sales: $5,000</li>
+                <li>New Customers: 50</li>
+                <li>Conversion Rate: 10%</li>
+                <li>Top Performing Products:
+                    <ul class="list-disc ml-6">
+                        <li>Product A</li>
+                        <li>Product B</li>
+                        <li>Product C</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Notifications</h3>
+            <ul class="list-disc ml-6">
+                <li>New Booking Received</li>
+                <li>Payment Processed</li>
+                <li>Upcoming Event Reminder</li>
+                <li>System Maintenance Alert</li>
+            </ul>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
+            <ul class="list-disc ml-6">
+                <li>John Doe booked a hotel in Paris</li>
+                <li>Susan Smith purchased a flight ticket to New York</li>
+                <li>James Brown updated his profile</li>
+                <li>Emily Johnson left a review for Product A</li>
+            </ul>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Quick Access</h3>
+            <ul class="list-disc ml-6">
+                <li><a href="#" class="text-blue-400 hover:underline">Create New Offer</a></li>
+                <li><a href="#" class="text-blue-400 hover:underline">View Reports</a></li>
+                <li><a href="#" class="text-blue-400 hover:underline">Manage Users</a></li>
+                <li><a href="#" class="text-blue-400 hover:underline">Edit Profile</a></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Personalization</h3>
+            <p class="mb-4">Customize your dashboard settings:</p>
+            <ul class="list-disc ml-6">
+                <li>Change Theme</li>
+                <li>Set Default View</li>
+                <li>Manage Widgets</li>
+                <li>Language Preferences</li>
+            </ul>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Reports</h3>
+            <div class="chart-container">
+                <canvas id="reportsChart" class="mb-4"></canvas>
+            </div>
+            <div class="report-details">
+                <h4 class="text-md font-semibold mb-2">Sales Report</h4>
+                <p class="text-sm">View detailed sales data for different time periods.</p>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg mt-4">View Report</button>
+            </div>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Analysis</h3>
+            <div class="analysis-content">
+                <p class="text-sm mb-4">Analyzing customer behavior and market trends:</p>
+                <ul class="list-disc ml-6">
+                    <li>Customer Segmentation</li>
+                    <li>Market Penetration</li>
+                    <li>Competitor Analysis</li>
+                    <li>Product Performance</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Financial Summary</h3>
+            <div class="financial-summary">
+                <p class="text-sm mb-4">Key financial insights and summaries:</p>
+                <ul class="list-disc ml-6">
+                    <li>Revenue Breakdown</li>
+                    <li>Profit Margin Analysis</li>
+                    <li>Expense Tracking</li>
+                    <li>Financial Projections</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dashboard-item bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-4">Customer Feedback</h3>
+            <div class="customer-feedback">
+                <p class="text-sm mb-4">Gathering and analyzing customer feedback:</p>
+                <ul class="list-disc ml-6">
+                    <li>Customer Satisfaction Surveys</li>
+                    <li>Net Promoter Score (NPS)</li>
+                    <li>Feedback Analysis</li>
+                    <li>Improvement Strategies</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
-</div>
 
-</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Chart data (placeholder)
+    var metricsData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Sales',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    // Metrics chart
+    var metricsChart = new Chart(document.getElementById('metricsChart'), {
+        type: 'line',
+        data: metricsData
+    });
+
+    // Reports chart (placeholder)
+    var reportsData = {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [{
+            label: 'Sales',
+            data: [2000, 3000, 4000, 3500, 5000],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    // Reports chart
+    var reportsChart = new Chart(document.getElementById('reportsChart'), {
+        type: 'bar',
+        data: reportsData
+    });
+</script>
 
 {% endblock %}

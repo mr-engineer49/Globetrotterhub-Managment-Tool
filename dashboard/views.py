@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import  login_required
 def index_client(request):
     if request.user.is_authenticated:
 
-        return render(request, 'index.html', context={
+        return render(request, 'dashboard.html', context={
         
     })
 

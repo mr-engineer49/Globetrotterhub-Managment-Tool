@@ -1,25 +1,39 @@
 {% extends 'index.html' %}
 
-
-
 {% block title %}{{ title }}{% endblock %}
 
-
-
 {% block content %}
-
 <div class="container mx-auto">
     <h1 class="text-3xl font-bold mb-4 text-white">{{ title }}</h1>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         
-        <div class="grid grid-cols-4 gap-4 text-white">
-            {{ campaign_form.as_div }}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-white">
+            <div class="col-span-1">
+                <label for="id_campaignname" class="block font-semibold mb-1">Campaign Name</label>
+                {{ campaign_form.campaignname }}
+                <span class="text-red-500">{{ campaign_form.campaignname.errors }}</span>
+            </div>
+            <div class="col-span-1">
+                <label for="id_objectives" class="block font-semibold mb-1">Objectives</label>
+                {{ campaign_form.objectives }}
+                <span class="text-red-500">{{ campaign_form.objectives.errors }}</span>
+            </div>
+            <div class="col-span-1">
+                <label for="id_budget" class="block font-semibold mb-1">Budget</label>
+                {{ campaign_form.budget }}
+                <span class="text-red-500">{{ campaign_form.budget.errors }}</span>
+            </div>
+            <div class="col-span-1">
+                <label for="id_start_date" class="block font-semibold mb-1">Start Date</label>
+                {{ campaign_form.start_date }}
+                <span class="text-red-500">{{ campaign_form.start_date.errors }}</span>
+            </div>
+            <!-- Add more fields as needed -->
         </div>
 
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Submit</button>
     </form>
 </div>
-
 {% endblock %}

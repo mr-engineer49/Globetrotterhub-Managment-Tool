@@ -2,203 +2,49 @@
 
 {% block index %}
 
-<style>
-    /* Add your custom styles here */
+<div class="container mx-auto p-8">
 
-    /* Example grid layout */
-    .campaign-card {
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        padding: 20px;
-    }
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold text-white">Campaigns List</h2>
+        <a href="{% url 'campaignmanagment:new_campaign' %}" class="bg-green-500 hover:bg-green-600 text-white rounded-full p-3">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+        </a>
+    </div>
 
-    .campaign-card h3 {
-        color: #333;
-        margin-top: 0;
-    }
-
-    .campaign-card p {
-        margin-bottom: 10px;
-    }
-
-    .campaign-card .status {
-        font-weight: bold;
-        padding: 5px 10px;
-        border-radius: 3px;
-    }
-
-    .campaign-card .active {
-        background-color: green;
-        color: white;
-    }
-
-    .campaign-card .pending {
-        background-color: orange;
-        color: black;
-    }
-
-    .campaign-card .inactive {
-        background-color: red;
-        color: white;
-    }
-
-    .campaign-actions {
-        margin-top: 10px;
-    }
-
-    .campaign-actions a {
-        text-decoration: none;
-        color: #007bff;
-        margin-right: 10px;
-    }
-
-    /* Form styles */
-    .create-campaign-form {
-        margin-top: 40px;
-    }
-
-    .create-campaign-form label {
-        font-weight: bold;
-    }
-
-    .create-campaign-form input[type="text"],
-    .create-campaign-form textarea,
-    .create-campaign-form input[type="datetime-local"] {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-
-    .create-campaign-form input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .create-campaign-form input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
-    .container {
-        max-width: 960px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-        color: #333;
-    }
-    form {
-        margin-bottom: 20px;
-    }
-    label {
-        font-weight: bold;
-    }
-    input[type="text"], textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-    tr:hover {
-        background-color: #ddd;
-    }
-
-</style>
-
-<body>
-
-    <div class="container">
-
-        <div class="container grid grid-cols-2 gap-4">
-            <h2 class="text-2xl underline bg-gray-800 text-white text-center justify-center rounded">Campaigns List</h2>
-            <a class="bg-green-100 w-16 justify-center flex text-white rounded-full" type="submit" href="{% url 'campaignmanagment:new_campaign' %}">
-                <img width="32" height="32" src="https://img.icons8.com/color/32/plus--v1.png" alt="plus--v1"/>
-            </a>
-        </div>
-
-        <style>
-            .active {
-    background-color: green;
-}
-
-.inactive {
-    background-color: red;
-}
-
-        </style>
-    
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {% for campaign in campaigns %}
-            <div class="campaign-card">
-                <a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}">
-                <h3>{{ campaign.campaignname }}</h3>
-                <hr>
-                <br>
-                <p><strong>Status:</strong> <span class="status {% if campaign.is_active %}active{% elif campaign.is_pending %}pending{% else %}inactive{% endif %}">
-                        {% if campaign.is_active %}
-                            Active
-                        {% elif campaign.is_pending %}
-                            Pending
-                        {% else %}
-                            Inactive
-                        {% endif %}
-                    </span>
-                </p>
-                <p><strong>Performance Metrics:</strong> Click-through rate: 5%</p>
-            </a>
-                <div class="campaign-actions">
-                    <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}">Edit</a>
-                    <a href="{% url 'campaignmanagment:delete_campaign' campaign.id %}">Delete</a>
-                </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {% for campaign in campaigns %}
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}" class="text-lg font-semibold text-gray-800">{{ campaign.campaignname }}</a>
+            <hr class="my-4">
+            <p class="text-gray-700"><strong>Status:</strong>
+                <span class="px-2 py-1 rounded-full text-sm
+                    {% if campaign.is_active %}
+                        bg-green-500 text-white
+                    {% elif campaign.is_pending %}
+                        bg-yellow-500 text-gray-800
+                    {% else %}
+                        bg-red-500 text-white
+                    {% endif %}">
+                    {% if campaign.is_active %}
+                        Active
+                    {% elif campaign.is_pending %}
+                        Pending
+                    {% else %}
+                        Inactive
+                    {% endif %}
+                </span>
+            </p>
+            <p class="text-gray-700"><strong>Performance Metrics:</strong> Click-through rate: 5%</p>
+            <div class="mt-4">
+                <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}" class="text-blue-500 hover:underline mr-2">Edit</a>
+                <a href="{% url 'campaignmanagment:delete_campaign' campaign.id %}" class="text-red-500 hover:underline">Delete</a>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
+    </div>
 
-</body>
+</div>
 
 {% endblock %}

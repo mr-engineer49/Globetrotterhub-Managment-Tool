@@ -24,5 +24,4 @@ urlpatterns = [
     path('index_form/', views.index_client_form, name="index_form"),
     path('index/', views.index_client, name="index"),
     path('profile/', views.profile_view, name="profile"),
-    
 ]

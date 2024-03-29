@@ -1,69 +1,115 @@
 {% extends 'index.html' %}
 
-
 {% block index %}
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
-    .container {
-        max-width: 960px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-        color: #333;
-    }
-    .integration {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-    }
-    .search {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-    }
-    .sync {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-</style>
-</head>
-<body>
+<body class="bg-gray-900 text-white">
 
-<div class="container">
-<h2>Booking Integration</h2>
-<div class="integration">
-    <h3>Integration with Booking Systems</h3>
-    <p>Streamline the booking process by integrating with booking systems from travel suppliers.</p>
+<div class="container mx-auto mt-8 px-4 text-white">
+    <h2 class="text-2xl font-bold mb-6 text-white">Booking Integration</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
+        <div class="integration bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">Integration with Booking Systems</h3>
+            <p class="text-sm mb-4">Streamline the booking process by integrating with booking systems from travel suppliers.</p>
+            <h4 class="text-lg font-semibold mb-2">Booking System Integration Statistics</h4>
+            <canvas id="integrationChart" class="w-full"></canvas>
+        </div>
+
+        <div class="search bg-gray-800 p-6 rounded-lg text-white">
+            <h3 class="text-lg font-semibold mb-2">Search and Book Travel Services</h3>
+            <p class="text-sm mb-4">Allow agencies to search and book flights, hotels, tours, and other travel services directly from the platform.</p>
+            <h4 class="text-lg font-semibold mb-2">Popular Destinations</h4>
+            <table class="w-full text-sm text-white">
+                <thead class="text-white">
+                    <tr>
+                        <th class="text-left">Destination</th>
+                        <th class="text-left">Number of Bookings</th>
+                    </tr>
+                </thead>
+                <tbody class="text-white">
+                    <tr>
+                        <td>New York</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>Paris</td>
+                        <td>120</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="sync bg-gray-800 p-6 rounded-lg mt-8 text-white">
+        <h3 class="text-lg font-semibold mb-2">Automatic Booking Data Sync</h3>
+        <p class="text-sm mb-4">Sync booking data automatically to keep records up-to-date and avoid double bookings.</p>
+        <h4 class="text-lg font-semibold mb-2">Sync Status</h4>
+        <table class="w-full text-sm text-white">
+            <thead>
+                <tr class="text-white">
+                    <th class="text-left">Source</th>
+                    <th class="text-left">Last Synced</th>
+                    <th class="text-left">Status</th>
+                </tr>
+            </thead>
+            <tbody class="text-white">
+                <tr class="text-white">
+                    <td>Expedia</td>
+                    <td>Mar 28, 2024 10:00 AM</td>
+                    <td>Success</td>
+                </tr>
+                <tr>
+                    <td>Booking.com</td>
+                    <td>Mar 28, 2024 09:30 AM</td>
+                    <td>Success</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<div class="search">
-    <h3>Search and Book Travel Services</h3>
-    <p>Allow agencies to search and book flights, hotels, tours, and other travel services directly from the platform.</p>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Chart data
+    var integrationData = {
+        labels: ['Expedia', 'Booking.com', 'Airbnb', 'Agoda', 'Hotels.com'],
+        datasets: [{
+            label: 'Integration Success Rate (%)',
+            data: [85, 90, 80, 88, 92],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
 
-<div class="sync">
-    <h3>Automatic Booking Data Sync</h3>
-    <p>Sync booking data automatically to keep records up-to-date and avoid double bookings.</p>
-</div>
-</div>
-
-</body>
-
+    // Integration chart
+    var integrationChart = new Chart(document.getElementById('integrationChart'), {
+        type: 'bar',
+        data: integrationData,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 
 {% endblock %}

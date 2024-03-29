@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block index %}
+<div class="container mx-auto p-8">
+    <h2 class="text-2xl font-semibold text-white">{{ client.fullname }}'s Booking History</h2>
+
+    <ul class="mt-6 text-white">
+        {% if client %}
+            <li class="py-4 border-b border-gray-300">
+                <strong class="block mb-2">Booking Dates:</strong>
+                <p>{{ client.start_date_client|date:'d-m-Y | H:i' }} - {{ client.end_date_client|date:'d-m-Y | H:i' }}</p>
+                
+                <strong class="block mt-4 mb-2">Type:</strong>
+                <div class="flex items-center">
+                    {% if client.booking_type == 'H' %}
+                        <span class="badge bg-blue-700 text-white py-1 px-3 rounded-full mr-2">Hotel</span>
+                    {% elif client.booking_type == 'V' %}
+                        <span class="badge bg-orange-800 text-white py-1 px-3 rounded-full mr-2">Vacations</span>
+                    {% elif client.booking_type == 'P' %}
+                        <span class="badge bg-green-800 text-white py-1 px-3 rounded-full mr-2">Places</span>
+                    {% else %}
+                        <span class="badge bg-red-600 text-white py-1 px-3 rounded-full mr-2">NULL</span>
+                    {% endif %}
+                </div>
+                
+                <strong class="block mt-4 mb-2">Place:</strong>
+                <p>{{ client.place }}</p>
+                
+                <strong class="block mt-4 mb-2">Price:</strong>
+                <p>${{ client.price }}</p>
+                <!-- Add more details as needed -->
+                <!-- Example: <strong>Rating:</strong> {{ client.rating }}<br> -->
+            </li>
+        {% else %}
+            <li class="py-4 border-b border-gray-300">No booking history found.</li>
+        {% endif %}
+    </ul>
+</div>
+
+{% endblock %}

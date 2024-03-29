@@ -1,78 +1,61 @@
 {% extends 'client.html' %}
 
-
-
 {% block title %}{{ title }}{% endblock %}
 
-
-
 {% block content %}
-
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
-        <h1 class="text-2xl font-bold mb-4">Add Client Form</h1>
-        <!-- <form action="" method="post" class="max-w-md mx-auto">
+        <h1 class="text-2xl font-bold mb-4 text-white">Add Client Form</h1>
+
+        <form class="text-white" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ client_form.non_field_errors }}
-            <div class="mb-4">
-                {{ client_form.fullname.label_tag }}
-                {{ client_form.fullname }}
-                <span class="text-red-500">{{ client_form.fullname.errors }}</span>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-white">
+                <div>
+                    <label for="id_fullname" class="block font-semibold mb-1">Full Name</label>
+                    {{ client_form.fullname }}
+                    <span class="text-red-500">{{ client_form.fullname.errors }}</span>
+                </div>
+                <div>
+                    <label for="id_email" class="block font-semibold mb-1">Email</label>
+                    {{ client_form.email }}
+                    <span class="text-red-500">{{ client_form.email.errors }}</span>
+                </div>
+                <div>
+                    <label for="id_phone_no" class="block font-semibold mb-1">Phone Number</label>
+                    {{ client_form.phone_no }}
+                    <span class="text-red-500">{{ client_form.phone_no.errors }}</span>
+                </div>
+                <div>
+                    <label for="id_start_date_client" class="block font-semibold mb-1">Start Date</label>
+                    {{ client_form.start_date_client }}
+                    <span class="text-red-500">{{ client_form.start_date_client.errors }}</span>
+                </div>
+                <div>
+                    <label for="id_booking_type" class="block font-semibold mb-1">Booking Type</label>
+                    {{ client_form.booking_type }}
+                    <span class="text-red-500">{{ client_form.booking_type.errors }}</span>
+                </div>
+                <div>
+                    <label for="id_place" class="block font-semibold mb-1">Place</label>
+                    {{ client_form.place }}
+                    <span class="text-red-500">{{ client_form.place.errors }}</span>
+                </div>
+                <div>
+                    <label for="id_price" class="block font-semibold mb-1">Price</label>
+                    {{ client_form.price }}
+                    <span class="text-red-500">{{ client_form.price.errors }}</span>
+                </div>
+                <div>
+                    <label for="id_phase" class="block font-semibold mb-1">Phase</label>
+                    {{ client_form.phase }}
+                    <span class="text-red-500">{{ client_form.phase.errors }}</span>
+                </div>
             </div>
-            <div class="mb-4">
-                {{ client_form.email.label_tag }}
-                {{ client_form.email }}
-                <span class="text-red-500">{{ client_form.email.errors }}</span>
-            </div>
-            <div class="mb-4">
-                {{ client_form.phone_no.label_tag }}
-                {{ client_form.phone_no }}
-                <span class="text-red-500">{{ client_form.phone_no.errors }}</span>
-            </div>
-            <div class="mb-4">
-                {{ client_form.start_date_client.label_tag }}
-                {{ client_form.start_date_client }}
-                <span class="text-red-500">{{ client_form.start_date_client.errors }}</span>
-            </div>
-            <div class="mb-4">
-                {{ client_form.booking_type.label_tag }}
-                {{ client_form.booking_type }}
-                <span class="text-red-500">{{ client_form.booking_type.errors }}</span>
-            </div>
-            <div class="mb-4">
-                {{ client_form.place.label_tag }}
-                {{ client_form.place }}
-                <span class="text-red-500">{{ client_form.place.errors }}</span>
-            </div>
-            <div class="mb-4">
-                {{ client_form.price.label_tag }}
-                {{ client_form.price }}
-                <span class="text-red-500">{{ client_form.price.errors }}</span>
-            </div>
-            <div class="mb-4">
-                {{ client_form.phase.label_tag }}
-                {{ client_form.phase }}
-                <span class="text-red-500">{{ client_form.phase.errors }}</span>
-            </div>
-            Repeat the above pattern for other fields
-            <div class="mb-4">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-            </div>
-      </form> -->
-    
-      <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <div class="grid grid-cols-4 gap-4 text-black">
-            {{ client_form.as_p }}
-        </div>
 
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Submit</button>
-    </form>
-
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Submit</button>
+        </form>
 
     </div>
 </body>
-
-
 {% endblock %}

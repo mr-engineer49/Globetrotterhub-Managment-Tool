@@ -3,20 +3,6 @@
 {% block index %}
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
-    .container {
-        max-width: 960px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
     h2 {
         color: #333;
         margin-bottom: 20px;
@@ -31,6 +17,7 @@
     }
     input[type="text"],
     input[type="email"],
+    input[type="password"],
     select {
         width: 100%;
         padding: 10px;
@@ -41,7 +28,7 @@
     }
     input[type="submit"] {
         background-color: #4CAF50;
-        color: white;
+        color: black;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
@@ -51,59 +38,73 @@
         background-color: #45a049;
     }
 </style>
-</head>
-<body>
 
-<div class="container">
-<h2>User Profile</h2>
+<body class="text-white">
 
-<div class="section">
-    <h3>User Information</h3>
-    <form action="/update_user_info" method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" value="JohnDoe" disabled><br>
+<div class="container text-white">
+    <h2 class="text-white">User Profile</h2>
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="johndoe@example.com"><br>
+    <div class="section text-white">
+        <h3>User Information</h3>
+        <form class="text-black" action="/update_user_info" method="POST">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" value="JohnDoe" disabled><br>
 
-        <label for="firstname">First Name:</label><br>
-        <input type="text" id="firstname" name="firstname" value="John"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="johndoe@example.com"><br>
 
-        <label for="lastname">Last Name:</label><br>
-        <input type="text" id="lastname" name="lastname" value="Doe"><br>
+            <label for="firstname">First Name:</label><br>
+            <input type="text" id="firstname" name="firstname" value="John"><br>
 
-        <input type="submit" value="Update Information">
-    </form>
-</div>
+            <label for="lastname">Last Name:</label><br>
+            <input type="text" id="lastname" name="lastname" value="Doe"><br>
 
-<div class="section">
-    <h3>Preferences</h3>
-    <form action="/update_preferences" method="POST">
-        <label for="theme">Theme:</label><br>
-        <select id="theme" name="theme">
-            <option value="light">Light</option>
-            <option value="dark" selected>Dark</option>
-        </select><br>
+            <input type="submit" value="Update Information">
+        </form>
+    </div>
 
-        <input type="submit" value="Save Preferences">
-    </form>
-</div>
+    <div class="section text-white">
+        <h3>Preferences</h3>
+        <form class="text-black" action="/update_preferences" method="POST">
+            <label for="theme">Theme:</label><br>
+            <select id="theme" name="theme">
+                <option value="light">Light</option>
+                <option value="dark" selected>Dark</option>
+            </select><br>
 
-<div class="section">
-    <h3>Change Password</h3>
-    <form action="/change_password" method="POST">
-        <label for="current_password">Current Password:</label><br>
-        <input type="password" id="current_password" name="current_password"><br>
+            <label for="language">Language:</label><br>
+            <select id="language" name="language">
+                <option value="english">English</option>
+                <option value="spanish">Spanish</option>
+            </select><br>
 
-        <label for="new_password">New Password:</label><br>
-        <input type="password" id="new_password" name="new_password"><br>
+            <input type="submit" value="Save Preferences">
+        </form>
+    </div>
 
-        <label for="confirm_password">Confirm Password:</label><br>
-        <input type="password" id="confirm_password" name="confirm_password"><br>
+    <div class="section text-white">
+        <h3>Change Password</h3>
+        <form class="text-black" action="/change_password" method="POST">
+            <label for="current_password">Current Password:</label><br>
+            <input type="password" id="current_password" name="current_password"><br>
 
-        <input type="submit" value="Change Password">
-    </form>
-</div>
+            <label for="new_password">New Password:</label><br>
+            <input type="password" id="new_password" name="new_password"><br>
+
+            <label for="confirm_password">Confirm Password:</label><br>
+            <input type="password" id="confirm_password" name="confirm_password"><br>
+
+            <input type="submit" value="Change Password">
+        </form>
+    </div>
+
+    <div class="section">
+        <h3>Account Deactivation</h3>
+        <form class="text-black" action="/deactivate_account" method="POST">
+            <p>Are you sure you want to deactivate your account?</p>
+            <input type="submit" value="Deactivate Account">
+        </form>
+    </div>
 </div>
 
 </body>

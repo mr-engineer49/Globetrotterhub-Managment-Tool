@@ -1,123 +1,109 @@
 {% extends 'index.html' %}
 
-
 {% block index %}
-
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
+    /* Custom styles */
+    .underline-link:hover {
+        text-decoration: underline;
     }
-    .container {
-        max-width: auto;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        line-height: 1.25rem;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
     }
-    h2 {
-        color: #333;
+    .badge-hotel {
+        background-color: #4A90E2;
+        color: #FFFFFF;
     }
-    form {
-        margin-bottom: 20px;
+    .badge-vacations {
+        background-color: #F5A623;
+        color: #FFFFFF;
     }
-    label {
-        font-weight: bold;
+    .badge-places {
+        background-color: #7ED321;
+        color: #FFFFFF;
     }
-    input[type="text"], textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
+    .badge-null {
+        background-color: #D0021B;
+        color: #FFFFFF;
     }
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+    .badge-created {
+        background-color: #4A90E2;
+        color: #FFFFFF;
     }
-    input[type="submit"]:hover {
-        background-color: #45a049;
+    .badge-running {
+        background-color: #7ED321;
+        color: #FFFFFF;
     }
-    table {
-        width: 100%;
-        border-collapse: collapse;
+    .badge-failed {
+        background-color: #D0021B;
+        color: #FFFFFF;
     }
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    th {
-        background-color: #f2f2f2;
+    .badge-finished {
+        background-color: #9B9B9B;
+        color: #FFFFFF;
     }
 </style>
-</head>
-<body>
 
-<div class="container">
-<h2>Client List</h2>
-<table>
-    <tr>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Booking Dates (Start - End)</th>
-        <th>Booking History</th>
-        <th>Type</th>
-        <th>Place</th>
-        <th>Price</th>
-        <th>Phase</th>
-    </tr>
-    {% for client in clients %}
-    <tr class="">
-        <td class="flex">{{ client.fullname }}</td>
-        <td>{{ client.email }}</td>
-        <td>{{ client.phone_no }}</td>
-        <td>{{ client.start_date_client }} - {{ client.end_date_client }}</td>
-        <td class="underline"><a href="#">See History</a></td>
-        <td><p class="booking_type {% if client.booking_type == 'H' %}Hotel{% else %}Vacations{% endif %}">
-            {% if client.booking_type == 'H' %}
-                <span class="bg-blue-700 text-white w-20 flex rounded-full justify-center">Hotel</span>
-            {% elif client.booking_type == 'V' %}
-            <span class="bg-orange-800 text-white w-20 flex rounded-full justify-center">Vacations</span>
-            {% elif client.booking_type == 'P' %}
-            <span class="bg-green-800 text-white w-20 flex rounded-full justify-center">Places</span>
-            {% else %}
-            <span class="bg-red-600 text-white w-20 flex rounded-full justify-center">NULL</span>
-            {% endif %}
-        </p></td>
-        <td>{{ client.place }}</td>
-        <td>$ {{ client.price }}</td>
-        <td><p class="phase {% if client.phase == 'C' %}Created{% else %}Running{% endif %}">
-            {% if client.phase == 'C' %}
-                <span class="bg-blue-700 text-white w-20 flex rounded-full justify-center">Created</span>
-                {% elif client.phase == 'R' %}
-                <span class="bg-green-700 text-white w-32 flex rounded-full justify-center">Running/Active</span>
-                {% elif client.booking_type not in 'HVP' %}
-                <span class="bg-red-600 text-white w-20 flex rounded-full justify-center">Failed</span>
-            {% else %}
-            <span class="bg-gray-800 text-white w-20 flex rounded-full justify-center">Finished</span>
-            {% endif %}
-        </p></td>
-    </tr>
-    {% endfor %}
-    <!-- Add more rows for other clients -->
-</table>
-
-<br>
-
-    <a class="" type="submit" href="{% url 'clientnmanagment:new_client' %}" value="Add Client">Add New Client</a>
-
+<div class="container mx-auto p-8">
+    <h2 class="text-2xl font-bold mb-4 text-white">Client List</h2>
+    <table class="w-full">
+        <thead>
+            <tr class=" text-white">
+                <th class="py-2">Full Name</th>
+                <th class="py-2">Email</th>
+                <th class="py-2">Phone</th>
+                <th class="py-2">Booking Dates (Start - End)</th>
+                <th class="py-2">Booking History</th>
+                <th class="py-2">Type</th>
+                <th class="py-2">Place</th>
+                <th class="py-2">Price</th>
+                <th class="py-2">Phase</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr class=" text-white">
+                <td class="py-2">{{ client.fullname }}</td>
+                <td class="py-2">{{ client.email }}</td>
+                <td class="py-2">{{ client.phone_no }}</td>
+                <td class="py-2">{{ client.start_date_client|date:'d-m-Y | H:i' }} - {{ client.end_date_client|date:'d-m-Y | H:i' }}</td>
+                <td class="py-2"><a href="{% url 'clientnmanagment:see_history' client.id %}" class="underline-link">See History</a></td>
+                <td class="py-2">
+                    {% if client.booking_type == 'H' %}
+                        <span class="badge badge-hotel">Hotel</span>
+                    {% elif client.booking_type == 'V' %}
+                        <span class="badge badge-vacations">Vacations</span>
+                    {% elif client.booking_type == 'P' %}
+                        <span class="badge badge-places">Places</span>
+                    {% else %}
+                        <span class="badge badge-null">NULL</span>
+                    {% endif %}
+                </td>
+                <td class="py-2"><img width="18" height="16" src="https://img.icons8.com/color/16/place-marker--v1.png" alt="place-marker--v1"/> {{ client.place }}</td>
+                <td class="py-2">${{ client.price }}</td>
+                <td class="py-2">
+                    {% if client.phase == 'C' %}
+                        <span class="badge badge-created">Created</span>
+                    {% elif client.phase == 'R' %}
+                        <span class="badge badge-running">Running/Active</span>
+                    {% elif client.booking_type not in 'HVP' %}
+                        <span class="badge badge-failed">Failed</span>
+                    {% else %}
+                        <span class="badge badge-finished">Finished</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'clientnmanagment:new_client' %}" class="block mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded text-center justify-center">Add New Client</a>
 </div>
-
-</body>
 
 {% endblock %}

@@ -1,90 +1,51 @@
 {% extends 'index.html' %}
 
-
 {% block index %}
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
-    .container {
-        max-width: 960px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-        color: #333;
-    }
-    form {
-        margin-bottom: 20px;
-    }
-    label {
-        font-weight: bold;
-    }
-    input[type="text"], textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-    input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-</style>
-</head>
-<body>
+<body class="text-white">
 
-<div class="container">
-<h2>Create New Offer</h2>
-<form action="/create_offer" method="POST">
-    <label for="destination">Destination:</label><br>
-    <input type="text" id="destination" name="destination"><br>
+<div class="container mx-auto mt-8 text-white">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="relative">
+            <h2 class="text-lg font-semibold mb-4">Create New Offer</h2>
+            <form action="/create_offer" method="POST" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    <label for="destination" class="text-sm">Destination:</label><br>
+                    <input type="text" id="destination" name="destination" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500">
+                </div>
 
-    <label for="duration">Duration (in days):</label><br>
-    <input type="number" id="duration" name="duration" min="1"><br>
+                <div>
+                    <label for="duration" class="text-sm">Duration (in days):</label><br>
+                    <input type="number" id="duration" name="duration" min="1" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500">
+                </div>
 
-    <label for="price">Price:</label><br>
-    <input type="text" id="price" name="price"><br>
+                <div>
+                    <label for="price" class="text-sm">Price:</label><br>
+                    <input type="text" id="price" name="price" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500">
+                </div>
 
-    <label for="inclusions">Inclusions:</label><br>
-    <textarea id="inclusions" name="inclusions" rows="4"></textarea><br>
+                <div>
+                    <label for="inclusions" class="text-sm">Inclusions:</label><br>
+                    <textarea id="inclusions" name="inclusions" rows="4" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+                </div>
 
-    <input type="submit" value="Create Offer">
-</form>
+                <input type="submit" value="Create Offer" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
+            </form>
+        </div>
 
-<p><strong>Helpful Tips:</strong></p>
-<ul>
-    <li>Provide a clear and enticing destination name to attract customers.</li>
-    <li>Specify the duration of the offer in days to manage customer expectations.</li>
-    <li>Set a competitive price to appeal to potential travelers.</li>
-    <li>List the inclusions to highlight the value of the offer.</li>
-</ul>
+        <div class="relative text-white">
+            <div class="mt-8 md:mt-0">
+                <p class="text-sm font-semibold mb-2">Helpful Tips:</p>
+                <ul class="list-disc ml-6">
+                    <li class="mt-2 text-sm">Provide a clear and enticing destination name to attract customers.</li>
+                    <li class="mt-2 text-sm">Specify the duration of the offer in days to manage customer expectations.</li>
+                    <li class="mt-2 text-sm">Set a competitive price to appeal to potential travelers.</li>
+                    <li class="mt-2 text-sm">List the inclusions to highlight the value of the offer.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
-
-</body>
 
 {% endblock %}

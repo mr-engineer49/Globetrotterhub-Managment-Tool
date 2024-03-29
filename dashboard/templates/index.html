@@ -3,32 +3,51 @@
 {% block user_authenticated %}
 
     <!-- Navigation -->
-    <nav class="py-2 px-4 bg-gradient-to-r from-blue-700 to-green-700 dark:bg-gray-800">
-        <div class="flex justify-between items-center">
+    <nav class="h-12 py-2 px-4 bg-gradient-to-r from-blue-700 to-green-700 dark:bg-gray-800 rounded-lg">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex-shrink-0">
-                <a href="{% url 'dashboard:index' %}" class="text-white font-bold text-xl">GlobetrotterHub</a>
+                <a href="{% url 'dashboard:index' %}" class="text-white font-bold text-lg">GlobetrotterHub</a>
             </div>
-            <div class="hidden md:flex items-center justify-center space-x-4 flex-grow">
+            <div class="hidden md:flex items-center space-x-4">
+                <!-- Navigation Links -->
                 <ul class="flex space-x-4">
+                    <li>
+                        <a href="{% url 'campaignmanagment:campaigns_form' %}" class="text-white hover:text-gray-300">Campaigns</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'clientnmanagment:client_form' %}" class="text-white hover:text-gray-300">Clients</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'offernmanagment:offers_form' %}" class="text-white hover:text-gray-300">Offers</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bookingintegration:booking_form' %}" class="text-white hover:text-gray-300">Booking Integrations</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'reportsandanalytics:reports_form' %}" class="text-white hover:text-gray-300">Reports</a>
+                    </li>
                 </ul>
             </div>
-            <div class="">
-                <!-- Registration Form -->
-                <div class="flex text-center justify-center flex-menu text-white grid grid-cols-5 text-bold" action="#">
-                    <a href="{% url 'campaignmanagment:campaigns_form' %}">| Campaign Managment |</a>
-                    <a href="{% url 'clientnmanagment:client_form' %}">| Client Managment |</a>
-                    <a href="{% url 'offernmanagment:offers_form' %}">| Offer Managment |</a>
-                    <a href="{% url 'bookingintegration:booking_form' %}">| Booking Integrations |</a>
-                    <a href="{% url 'reportsandanalytics:reports_form' %}">| Reports & Analzysis |</a>
+            <div class="flex items-center space-x-4">
+                <!-- Profile and Logout Links -->
+                <div>
+                    <a href="{% url 'dashboard:profile' %}" class="text-white flex items-center space-x-2">
+                        <span>Hi, {{ request.user.username | title }}</span>
+                        <img src="https://img.icons8.com/material/24/user--v1.png" alt="User Icon" class="w-6 h-6" />
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'sms:sms_form' %}" class="text-white flex items-center space-x-2">
+                        <img src="https://img.icons8.com/material/24/chat--v4.png" alt="Chat Icon" class="w-6 h-6" />
+                        <span>Chats</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'auth:logout' %}" class="text-white bg-red-600 px-4 py-2 rounded-full hover:bg-red-700">Logout</a>
                 </div>
             </div>
-            &emsp;
-                <a href="{% url 'dashboard:profile' %}"><span class="text-white inline flex">Hi!&emsp;<img width="24" height="24" src="https://img.icons8.com/material/24/user--v1.png" alt="user--v1"/>{{ request.user.username | title }}&emsp;|&emsp;</span></a>
-                    <span><a class="text-white inline flex" href="{% url 'sms:sms_form' %}"><img width="24" height="24" src="https://img.icons8.com/material/24/chat--v4.png" alt="chat--v4"/>Chats</a></span>
-                    &emsp;
-                <a class="text-white bg-red-600 px-4 y-2 center align-center flex rounded-full" href="{% url 'auth:logout' %}">Logout</a>
+            <!-- Hamburger menu icon for mobile -->
             <div class="md:hidden">
-                <!-- Hamburger menu icon for mobile -->
                 <button class="text-white focus:outline-none">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -37,6 +56,7 @@
             </div>
         </div>
     </nav>
+ 
 
     
     <body class="container">

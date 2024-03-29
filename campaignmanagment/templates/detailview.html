@@ -3,84 +3,62 @@
 {% block title %}Campaign Detail{% endblock %}
 
 {% block content %}
-<style>
-    /* Custom styles for campaign detail */
-    .campaign-detail {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
-
-    .campaign-detail .section {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .campaign-detail h3 {
-        color: #333;
-    }
-
-    .campaign-detail p {
-        margin-bottom: 10px;
-    }
-
-    .actions {
-        margin-top: 20px;
-    }
-
-    .actions .btn-primary {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    .actions .btn-primary:hover {
-        background-color: #45a049;
-    }
-</style>
-
-<div class="container">
-    <h1>Campaign Detail</h1>
-    <hr>
-    <div class="campaign-detail">
-        <div class="section">
-            <h3>Basic Information</h3>
+<div class="container mx-auto p-8">
+    <h1 class="text-2xl text-white font-bold">Campaign Detail</h1>
+    <hr class="my-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Basic Information</h3>
             <p><strong>Name:</strong> {{ campaign.campaignname }}</p>
             <p><strong>Objectives:</strong> {{ campaign.objectives }}</p>
             <p><strong>Budget:</strong> ${{ campaign.budget }}</p>
-            <p><strong>Status:</strong> {% if campaign.is_active %}
-                                        Active
-                                    {% elif campaign.is_pending %}
-                                        Pending
-                                    {% else %}
-                                        Inactive
-                                    {% endif %}
+            <p><strong>Status:</strong>
+                <span class="text-sm font-semibold 
+                    {% if campaign.is_active %}
+                        text-green-600
+                    {% elif campaign.is_pending %}
+                        text-yellow-600
+                    {% else %}
+                        text-red-600
+                    {% endif %}">
+                    {% if campaign.is_active %}
+                        Active
+                    {% elif campaign.is_pending %}
+                        Pending
+                    {% else %}
+                        Inactive
+                    {% endif %}
+                </span>
             </p>
             <p><strong>Start Date:</strong> {{ campaign.start_date }}</p>
             <p><strong>End Date:</strong> {{ campaign.end_date }}</p>
         </div>
-        <div class="section">
-            <h3>Target Audience</h3>
-            <p><strong>Gender:</strong> {% if campaign.gender == 'M' %} Male {% elif campaign.gender == 'F' %} Female {% else %} All Genders {% endif %}</p>
-            <p><strong>Age:</strong> {% if campaign.age == 'under_18' %} Under 18 {% elif campaign.age == '18_35' %} 18-35 {% elif campaign.age == '36_50' %} 36-50 {% elif campaign.age == 'over_50' %} Over 50 {% else %} All Ages {% endif %}</p>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Target Audience</h3>
+            <p><strong>Gender:</strong> 
+                {% if campaign.gender == 'M' %} Male 
+                {% elif campaign.gender == 'F' %} Female 
+                {% else %} All Genders 
+                {% endif %}
+            </p>
+            <p><strong>Age:</strong> 
+                {% if campaign.age == 'under_18' %} Under 18 
+                {% elif campaign.age == '18_35' %} 18-35 
+                {% elif campaign.age == '36_50' %} 36-50 
+                {% elif campaign.age == 'over_50' %} Over 50 
+                {% else %} All Ages 
+                {% endif %}
+            </p>
             <p><strong>Location:</strong> {{ campaign.location }}</p>
             <p><strong>Interests:</strong> {{ campaign.interests }}</p>
         </div>
     </div>
-    <hr>
-
-    <div class="actions">
-        <h3>Actions</h3>
-        <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}" class="btn btn-primary">Edit Campaign</a>
+    <hr class="my-8">
+    <div class="flex justify-between items-center">
+        <h3 class="text-lg text-white font-semibold">Actions</h3>
+        <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Edit Campaign</a>
         <!-- Add more actions/buttons as needed -->
     </div>
-
 </div>
 
 {% endblock %}
