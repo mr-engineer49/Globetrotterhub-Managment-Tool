@@ -3,7 +3,7 @@
 {% block user_authenticated %}
 
     <!-- Navigation -->
-    <nav class="h-12 py-2 px-4 bg-gradient-to-r from-blue-700 to-green-700 dark:bg-gray-800 rounded-lg">
+    <nav class="py-2 px-4 bg-gradient-to-r from-blue-700 to-green-700 dark:bg-gray-800 rounded-lg">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex-shrink-0">
                 <a href="{% url 'dashboard:index' %}" class="text-white font-bold text-lg">GlobetrotterHub</a>
@@ -11,17 +11,17 @@
             <div class="hidden md:flex items-center space-x-4">
                 <!-- Navigation Links -->
                 <ul class="flex space-x-4">
-                    <li>
-                        <a href="{% url 'campaignmanagment:campaigns_form' %}" class="text-white hover:text-gray-300">Campaigns</a>
+                    <li class="text-white">
+                        <a href="{% url 'campaignmanagment:campaigns_form' %}" class="text-white hover:text-gray-300">Campaigns</a>&ensp;|
                     </li>
-                    <li>
-                        <a href="{% url 'clientnmanagment:client_form' %}" class="text-white hover:text-gray-300">Clients</a>
+                    <li class="text-white">
+                        <a href="{% url 'clientnmanagment:client_form' %}" class="text-white hover:text-gray-300">Clients</a>&ensp;|
                     </li>
-                    <li>
-                        <a href="{% url 'offernmanagment:offers_form' %}" class="text-white hover:text-gray-300">Offers</a>
+                    <li class="text-white">
+                        <a href="{% url 'offernmanagment:offers_form' %}" class="text-white hover:text-gray-300">Offers</a>&ensp;|
                     </li>
-                    <li>
-                        <a href="{% url 'bookingintegration:booking_form' %}" class="text-white hover:text-gray-300">Booking Integrations</a>
+                    <li class="text-white">
+                        <a href="{% url 'bookingintegration:booking_form' %}" class="text-white hover:text-gray-300">Booking Integrations</a>&ensp;|
                     </li>
                     <li>
                         <a href="{% url 'reportsandanalytics:reports_form' %}" class="text-white hover:text-gray-300">Reports</a>
@@ -36,6 +36,7 @@
                         <img src="https://img.icons8.com/material/24/user--v1.png" alt="User Icon" class="w-6 h-6" />
                     </a>
                 </div>
+                <p class="text-white">|</p>
                 <div>
                     <a href="{% url 'sms:sms_form' %}" class="text-white flex items-center space-x-2">
                         <img src="https://img.icons8.com/material/24/chat--v4.png" alt="Chat Icon" class="w-6 h-6" />

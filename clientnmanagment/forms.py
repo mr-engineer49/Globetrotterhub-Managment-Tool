@@ -36,7 +36,7 @@ class ClientFormBase(forms.ModelForm):
         widgets = {
             'fullname': forms.TextInput(attrs={'class': INPUT_CLASSES}),
             'email': forms.EmailInput(attrs={'class': INPUT_CLASSES}),
-            'phone_no': forms.TextInput(attrs={'class': INPUT_CLASSES}),
+            'phone_no': forms.TextInput(attrs={'class': INPUT_CLASSES, 'id':'phone', 'name':'phone'}),
             'place': forms.TextInput(attrs={'class': INPUT_CLASSES}),
             'price': forms.NumberInput(attrs={'class': INPUT_CLASSES}),
             'published_by': forms.TextInput(attrs={'class': INPUT_CLASSES}),

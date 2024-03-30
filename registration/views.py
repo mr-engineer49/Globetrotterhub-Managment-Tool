@@ -26,7 +26,6 @@ def registration_view(request):
 			return redirect("dashboard:index")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	register_form = NewUserForm()
-	request.session.set_test_cookie()
 	return render (request=request, template_name="register.html", context={"register_form":register_form})
 
 
@@ -50,7 +49,6 @@ def login_view(request):
 		else:
 			messages.error(request,"Invalid username or password.")
 	login_form = AuthenticationForm()
-	request.session.set_test_cookie()
 	return render(request=request, template_name="login.html", context={"login_form":login_form})
 
 
@@ -58,7 +56,6 @@ def login_view(request):
 
 def logout_view(request):
 	logout = Session.objects.all().delete()
-	request.session.set_test_cookie()
 	return render (request=request, template_name='homepage.html', context={
 		'logout': logout
 	})

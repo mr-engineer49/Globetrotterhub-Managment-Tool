@@ -16,18 +16,17 @@ class NewClientModel(models.Model):
         ('F', 'Finished'),
     ]
 
-    default_user_id = User.objects.first().id
 
     fullname = models.CharField(blank=True, max_length=50)
     email = models.EmailField(blank=True)
-    phone_no = models.IntegerField(blank=True, max_length=15)
+    phone_no = models.IntegerField(blank=True)
     start_date_client = models.DateTimeField(auto_now_add=True, null=True)
     end_date_client = models.DateTimeField(auto_now_add=True, null=True)
     booking_type = models.CharField(blank=True, default=BOOKING_TYPE_CHOICES, max_length=50)
     place = models.CharField(blank=True, max_length=50)
     price = models.IntegerField(blank=True)
     phase = models.CharField(blank=True, default=PHASE_CHOICES, max_length=50)
-    published_by = models.ForeignKey(User, related_name='client_author', on_delete=models.CASCADE, default=default_user_id)
+    published_by = models.ForeignKey(User, related_name='client_author', on_delete=models.CASCADE)
     is_active = models.BooleanField(default=False)
     is_pending = models.BooleanField(default=True)
 

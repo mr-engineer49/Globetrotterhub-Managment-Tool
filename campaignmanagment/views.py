@@ -2,21 +2,27 @@ from django.shortcuts import  render, redirect, get_object_or_404
 from .forms import NewCampaignForm, EditCampaignForm
 from .models import NewCampaignModel
 from django.contrib.auth.decorators import  login_required
-
+import random
 
 
 
 # Create your views here.
-@login_required()
+@login_required
 def campaigns_view(request):
-    campaigns = NewCampaignModel.objects.filter()
+    campaigns = NewCampaignModel.objects.filter(published_by=request.user)
+    random_clicks = random.randint(100000, 999999)
+    random_impressions = random.randint(100000, 999999)
+
+
     return render(request, 'campaigns.html', context={
+        'random_clicks': random_clicks,
+        'random_impressions': random_impressions,
         'campaigns':campaigns,
     })
 
 
 
-@login_required()
+@login_required
 def new_campaign_view(request):
     if request.method == "POST":
         campaign_form = NewCampaignForm(request.POST, request.FILES)

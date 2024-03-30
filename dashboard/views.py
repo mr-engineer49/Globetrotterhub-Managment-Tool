@@ -24,6 +24,12 @@ def index_client_form(request):
 
 @login_required
 def profile_view(request):
-    return render (request, 'profile.html', context={
+    user_name = request.user.username
+    user_email = request.user.email
+    user_password = request.user.password
 
+    return render (request, 'profile.html', context={
+        'user_name':user_name,
+        'user_email':user_email,
+        'user_password':user_password
     })

@@ -5,7 +5,7 @@
 <div class="container mx-auto p-8">
 
     <div class="flex justify-between items-center mb-8">
-        <h2 class="text-2xl font-bold text-white">Campaigns List</h2>
+        <h2 class="text-2xl font-bold text-white flex justify-center text-center">Campaigns List</h2>
         <a href="{% url 'campaignmanagment:new_campaign' %}" class="bg-green-500 hover:bg-green-600 text-white rounded-full p-3">
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -13,10 +13,36 @@
         </a>
     </div>
 
+    <!-- Filter Section -->
+    <div class="flex justify-between items-center mb-4">
+        <!-- Add filter options here -->
+        <input type="text" placeholder="Search Campaigns..." class="px-4 py-2 border border-gray-300 rounded-md">
+        <select class="px-4 py-2 border border-gray-300 rounded-md">
+            <option value="">Sort by</option>
+            <option value="name">Name</option>
+            <option value="status">Status</option>
+            <option value="date">Date</option>
+            <!-- Add more sorting options as needed -->
+        </select>
+    </div>
+
+    <!-- Campaign List -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {% for campaign in campaigns %}
         <div class="bg-white rounded-lg shadow-md p-6">
-            <a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}" class="text-lg font-semibold text-gray-800">{{ campaign.campaignname }}</a>
+            {% if "Facebook" in campaign.campaignname %}
+            <img class="flex inline" width="32" height="32" src="https://img.icons8.com/color/32/facebook-new.png" alt="facebook-new"/>
+            {% elif "Instagram" in campaign.campaignname %}
+            <img class="flex inline" width="32" height="32" src="https://img.icons8.com/color/32/instagram-new.png" alt="instagram-new"/>
+            {% elif "X (Twitter)" in campaign.campaignname %}
+            <img class="flex inline" width="32" height="32" src="https://img.icons8.com/color/32/twitterx--v1.png" alt="twitterx--v1"/>
+            {% elif "TikTok" in campaign.campaignname %}
+            <img class="flex inline" width="32" height="32" src="https://img.icons8.com/color/32/tiktok--v1.png" alt="tiktok--v1"/>
+            {% elif "Google" in campaign.campaignname %}
+            <img class="flex inline" width="32" height="32" src="https://img.icons8.com/color/32/google-logo.png" alt="google-logo"/>
+            {% else %}
+            {% endif %}
+            <a href="{% url 'campaignmanagment:campaign_detail' campaign.id %}" class="text-lg flex inline font-semibold text-gray-800">{{ campaign.campaignname }} | {{ campaign.titlename }}</a>
             <hr class="my-4">
             <p class="text-gray-700"><strong>Status:</strong>
                 <span class="px-2 py-1 rounded-full text-sm
@@ -36,13 +62,26 @@
                     {% endif %}
                 </span>
             </p>
-            <p class="text-gray-700"><strong>Performance Metrics:</strong> Click-through rate: 5%</p>
+            <p class="text-gray-700"><strong>Performance Metrics:</strong></p>
+            <div class="flex">
+                <p class="flex inline" id="clicks">{{ random_clicks|floatformat:0 }} Clicks</p>&ensp;|&ensp;
+                <p id="impressions">{{ random_impressions|floatformat:0 }} Impressions</p>
+            </div>
+
+            
+            <!-- Add more campaign details here -->
             <div class="mt-4">
                 <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}" class="text-blue-500 hover:underline mr-2">Edit</a>
                 <a href="{% url 'campaignmanagment:delete_campaign' campaign.id %}" class="text-red-500 hover:underline">Delete</a>
             </div>
         </div>
         {% endfor %}
+    </div>
+
+    <!-- Pagination Section -->
+    <div class="flex justify-center mt-8">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-4 py-2">Previous</button>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-4 py-2 ml-4">Next</button>
     </div>
 
 </div>

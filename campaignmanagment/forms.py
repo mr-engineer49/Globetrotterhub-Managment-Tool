@@ -22,31 +22,35 @@ class NewCampaignForm(forms.ModelForm):
     )
 
 
-    PLATFORM_CHOICES = (
-        (None, "-- None --"),
-        ("FB", "Facebook"),
-        ("IG", "Instagram"),
-        ("GO", "Google"),
-        ("BI", "Bing"),
-        ("Tk", "TikTok"),
-    )
+    # PLATFORM_CHOICES = (
+    #     (None, "-- None --"),
+    #     ("FB", "Facebook"),
+    #     ("IG", "Instagram"),
+    #     ("GO", "Google"),
+    #     ("BI", "Bing"),
+    #     ("Tk", "TikTok"),
+    # )
 
-    platfrom = forms.ChoiceField(
-        label='Platform',
-        choices=PLATFORM_CHOICES,
-        required=True,
-        widget=forms.Select(attrs={'class': SELECT_CLASSES}),
-    )
+    # platfrom = forms.ChoiceField(
+    #     label='Platform',
+    #     choices=PLATFORM_CHOICES,
+    #     required=True,
+    #     widget=forms.Select(attrs={'class': SELECT_CLASSES}),
+    # )
        
 
 
     class Meta:
         model = NewCampaignModel
-        fields = ('campaignname', 'objectives', 'budget', 'status', 'platfrom')
+        fields = ('campaignname', 'titlename', 'objectives', 'budget', 'status')
         widgets = {
             'campaignname': forms.TextInput(attrs={
             'class': INPUT_CLASSES,
-            'placeholder': 'Enter Campaign Name',
+            'placeholder': 'Enter Campaign Type',
+            }),
+            'titlename': forms.TextInput(attrs={
+            'class': INPUT_CLASSES,
+            'placeholder': 'Enter Title',
             }),
             'objectives': forms.Textarea(attrs={
             'class': INPUT_CLASSES,
@@ -74,31 +78,35 @@ class EditCampaignForm(forms.ModelForm):
     )
 
 
-    PLATFORM_CHOICES = (
-        (None, "-- None --"),
-        ("FB", "Facebook"),
-        ("IG", "Instagram"),
-        ("GO", "Google"),
-        ("BI", "Bing"),
-        ("Tk", "TikTok"),
-    )
+    # PLATFORM_CHOICES = (
+    #     (None, "-- None --"),
+    #     ("FB", "Facebook"),
+    #     ("IG", "Instagram"),
+    #     ("GO", "Google"),
+    #     ("BI", "Bing"),
+    #     ("Tk", "TikTok"),
+    # )
 
-    platfrom = forms.ChoiceField(
-        label='Platform',
-        choices=PLATFORM_CHOICES,
-        required=True,
-        widget=forms.Select(attrs={'class': SELECT_CLASSES}),
-    )
+    # platfrom = forms.ChoiceField(
+    #     label='Platform',
+    #     choices=PLATFORM_CHOICES,
+    #     required=True,
+    #     widget=forms.Select(attrs={'class': SELECT_CLASSES}),
+    # )
        
 
 
     class Meta:
         model = NewCampaignModel
-        fields = ('campaignname', 'objectives', 'budget', 'status', 'platfrom')
+        fields = ('campaignname', 'titlename', 'objectives', 'budget', 'status')
         widgets = {
             'campaignname': forms.TextInput(attrs={
             'class': INPUT_CLASSES,
             'placeholder': 'Enter Campaign Name',
+            }),
+            'titlename': forms.TextInput(attrs={
+            'class': INPUT_CLASSES,
+            'placeholder': 'Enter Title',
             }),
             'objectives': forms.Textarea(attrs={
             'class': INPUT_CLASSES,

@@ -49,13 +49,35 @@
         background-color: #9B9B9B;
         color: #FFFFFF;
     }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+
+
 </style>
 
 <div class="container mx-auto p-8">
-    <h2 class="text-2xl font-bold mb-4 text-white">Client List</h2>
+    <h2 class="text-2xl font-bold mb-4 text-white flex justify-center">Client List</h2>
+    <br>
     <table class="w-full">
         <thead>
-            <tr class=" text-white">
+            <tr class=" text-black">
                 <th class="py-2">Full Name</th>
                 <th class="py-2">Email</th>
                 <th class="py-2">Phone</th>
@@ -69,7 +91,7 @@
         </thead>
         <tbody>
             {% for client in clients %}
-            <tr class=" text-white">
+            <tr class=" text-black">
                 <td class="py-2">{{ client.fullname }}</td>
                 <td class="py-2">{{ client.email }}</td>
                 <td class="py-2">{{ client.phone_no }}</td>

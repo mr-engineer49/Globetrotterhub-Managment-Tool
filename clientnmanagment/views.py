@@ -8,13 +8,13 @@ from django.contrib.auth.decorators import  login_required
 # Create your views here.
 @login_required
 def client_managment_view(request):
-    clients = NewClientModel.objects.filter()
+    clients = NewClientModel.objects.filter(published_by=request.user)
     return render (request, 'client.html', context={
         'clients':clients
     } )
 
 
-
+@login_required
 def see_history_view(request, pk):
     client = get_object_or_404(NewClientModel, pk=pk)
     return render(request, 'see_history.html', context={
@@ -23,7 +23,7 @@ def see_history_view(request, pk):
 
 
 
-@login_required()
+@login_required
 def new_client_view(request):
     if request.method == "POST":
         client_form = NewClientForm(request.POST, request.FILES)

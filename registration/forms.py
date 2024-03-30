@@ -12,7 +12,7 @@ PASSWORD_CLASS = "form-text bg-yellow-100 border border-yellow-400 text-yellow-7
 
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(label='Email', required=True)
-	username = forms.CharField(label='Username', max_length=100, required=True)
+	username = forms.CharField(label='Username', max_length=10, required=True)
 
 	class Meta:
 		model = User
@@ -24,6 +24,7 @@ class NewUserForm(UserCreationForm):
 			'id': 'username'
 			}),
 			'email': forms.EmailInput(attrs={
+			'id': 'email',
 			'placeholder':  'Enter email...',
 			'class': f'{REGISTER_CLASS} appearance-none border rounded w-96 bg-gray-200 mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
 			}),
