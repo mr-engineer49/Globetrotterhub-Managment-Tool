@@ -28,7 +28,7 @@
         <div class="flex-shrink-0">
             <a href="/" class="text-white font-bold text-xl">GlobetrotterHub</a>
         </div>
-        <div class="hidden md:flex items-center justify-center space-x-4 flex-grow">
+        <div id="mobile-menu" class="hidden md:flex items-center justify-center space-x-4 flex-grow">
             <ul class="flex space-x-4">
                 <li><a href="/" class="text-white hover:text-gray-200">Home</a></li>
                 <li><a href="{% url 'homepage:about_us' %}" class="text-white hover:text-gray-200">About Us</a></li>
@@ -46,7 +46,7 @@
         </div>
         <div class="md:hidden">
             <!-- Hamburger menu icon for mobile -->
-            <button class="text-white focus:outline-none">
+            <button id="mobile-menu-btn" class="text-white focus:outline-none">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -54,6 +54,14 @@
         </div>
     </div>
 </nav>
+
+<script>
+    // Toggle mobile menu visibility
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+
 {%endif%}
     
     
