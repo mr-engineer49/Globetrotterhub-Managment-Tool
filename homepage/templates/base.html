@@ -14,7 +14,11 @@
     
     <!-- Header -->
     <header class="py-2 px-6 bg-white dark:bg-gray-800 flex items-center justify-between">
+        {%if request.user.is_authenticated %}
+        <a href="{% url 'dashboard:index' %}"><h1 class="text-xl font-semibold text-gray-800 dark:text-white">Welcome to GlobetrotterHub</h1></a>
+        {% else %}
         <a href="#"><h1 class="text-xl font-semibold text-gray-800 dark:text-white">Welcome to GlobetrotterHub</h1></a>
+        {% endif %}
         <p class="text-gray-600 dark:text-gray-300">Your all-in-one platform for managing travel campaigns and offers</p>
     </header>
     
