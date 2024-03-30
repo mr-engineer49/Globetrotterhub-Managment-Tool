@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+6+ewlug-p&$bdr+nuu=d7$!vd^r$+4lfad1t^*=5x0a_^sd(_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*''.vercel.app']
 
 
 LOGIN_URL = '/login/'
@@ -95,7 +95,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'globetrotterhub.wsgi.application'
+WSGI_APPLICATION = 'globetrotterhub.wsgi.app'
 
 
 # Database
