@@ -15,6 +15,12 @@ def about_us(request):
     })
 
 
+def services(request):
+    return render(request, 'services.html', context={
+
+    })
+
+
 def contact(request):
     return render(request, 'contact.html', context={
 

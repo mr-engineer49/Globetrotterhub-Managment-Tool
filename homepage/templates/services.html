@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+{% block content %}
+
+<body class="bg-gray-100">
+    <!-- Main Content -->
+    <div class="container mx-auto py-12">
+        <h1 class="text-4xl font-bold text-center mb-12 text-white">Our Travel SaaS Platform Services</h1>
+
+        <!-- Service Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1: Booking System -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="https://images.ctfassets.net/63bmaubptoky/RPlUUZ5AQf9VSC8asPp9NQCp6_Ux7Vtfom651G08W7s/94c66b522267819e3210dce26256ba6d/Free-online-booking-system-UK-Capterra-Header2.jpg?w=1500" alt="Booking System" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2">Booking System</h2>
+                    <p class="text-gray-600">Easily manage bookings for flights, hotels, car rentals, and more with
+                        our comprehensive booking system.</p>
+                </div>
+            </div>
+
+            <!-- Service 2: Trip Planning Tools -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="https://media.istockphoto.com/id/1015542074/photo/making-check-list-for-travel.jpg?s=2048x2048&w=is&k=20&c=Qtbd_5kUeWc-PrJ5JU_2m8JpVlemt-Z64q3bEH_R01w=" alt="Trip Planning Tools" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2">Trip Planning Tools</h2>
+                    <p class="text-gray-600">Empower travelers to plan their trips effortlessly with intuitive trip
+                        planning tools, itinerary creation, and destination recommendations.</p>
+                </div>
+            </div>
+
+            <!-- Service 3: Customer Support Integration -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="https://img.freepik.com/free-vector/support-infographic_1025-409.jpg?w=740&t=st=1711822324~exp=1711822924~hmac=ec65562aa483136e12c7bd390a9c626cd8c108b1573b695c1d191cdc64534701" alt="Customer Support Integration" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2">Customer Support Integration</h2>
+                    <p class="text-gray-600">Deliver exceptional customer support with integrated helpdesk solutions,
+                        chatbots, and ticketing systems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

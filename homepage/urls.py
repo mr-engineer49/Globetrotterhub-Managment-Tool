@@ -28,6 +28,7 @@ app_name='homepage'
 urlpatterns = [
     path('about_us/', views.about_us, name="about_us"),
     path('contact/', views.contact, name="contact"),
+    path('services/', views.services, name="services"),
     path('', views.homepage, name="homepage"),
 ]
 
