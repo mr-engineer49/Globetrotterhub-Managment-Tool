@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+6+ewlug-p&$bdr+nuu=d7$!vd^r$+4lfad1t^*=5x0a_^sd(_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*', '.vercel.app', '.now.sh']
 
@@ -36,7 +36,6 @@ LOGOUT_REDIRECT_URL = 'homepage:homepage'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_SAVE_EVERY_REQUEST = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE
 
 
 # Application definition

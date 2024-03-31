@@ -1,0 +1,40 @@
+{% extends 'offers.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-bold mb-4 text-center">{{ title }}</h1>
+
+        <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+            <form class="grid grid-cols-1 gap-4" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <label for="offer_name" class="text-gray-700">Offer Name:</label>
+                    {{ offer_form.offer_name }}
+                </div>
+                <div>
+                    <label for="destination_place" class="text-gray-700">Destination:</label>
+                    {{ offer_form.destination_place }}
+                </div>
+                <div>
+                    <label for="duration" class="text-gray-700">Duration (in days):</label>
+                    {{ offer_form.duration }}
+                </div>
+                <div>
+                    <label for="price" class="text-gray-700">Price:</label>
+                    {{ offer_form.price }}
+                </div>
+                <div>
+                    <label for="offer_description" class="text-gray-700">Description:</label>
+                    {{ offer_form.offer_description }}
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">Create Offer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

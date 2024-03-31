@@ -32,14 +32,13 @@ class ClientFormBase(forms.ModelForm):
 
     class Meta:
         model = NewClientModel
-        fields = ('fullname', 'email', 'phone_no', 'booking_type', 'phase', 'place', 'price', 'published_by', 'is_active', 'is_pending')
+        fields = ('fullname', 'email', 'phone_no', 'booking_type', 'phase', 'place', 'price', 'is_active', 'is_pending')
         widgets = {
             'fullname': forms.TextInput(attrs={'class': INPUT_CLASSES}),
             'email': forms.EmailInput(attrs={'class': INPUT_CLASSES}),
             'phone_no': forms.TextInput(attrs={'class': INPUT_CLASSES, 'id':'phone', 'name':'phone'}),
             'place': forms.TextInput(attrs={'class': INPUT_CLASSES}),
             'price': forms.NumberInput(attrs={'class': INPUT_CLASSES}),
-            'published_by': forms.TextInput(attrs={'class': INPUT_CLASSES}),
             'is_active': forms.CheckboxInput(attrs={'class': 'form-checkbox'}),
             'is_pending': forms.CheckboxInput(attrs={'class': 'form-checkbox'}),
         }

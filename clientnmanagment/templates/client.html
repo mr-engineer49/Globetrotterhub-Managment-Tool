@@ -62,11 +62,8 @@
     th {
         background-color: #f2f2f2;
     }
-    tr:nth-child(even) {
+    tr:nth-child() {
         background-color: #f2f2f2;
-    }
-    tr:hover {
-        background-color: #ddd;
     }
 
 
@@ -91,12 +88,12 @@
         </thead>
         <tbody>
             {% for client in clients %}
-            <tr class=" text-black">
+            <tr class=" text-white">
                 <td class="py-2">{{ client.fullname }}</td>
                 <td class="py-2">{{ client.email }}</td>
                 <td class="py-2">{{ client.phone_no }}</td>
                 <td class="py-2">{{ client.start_date_client|date:'d-m-Y | H:i' }} - {{ client.end_date_client|date:'d-m-Y | H:i' }}</td>
-                <td class="py-2"><a href="{% url 'clientnmanagment:see_history' client.id %}" class="underline-link">See History</a></td>
+                <td class="py-2"><a href="{% url 'clientnmanagment:see_history' client.id %}" class="underline-link underline">See History</a></td>
                 <td class="py-2">
                     {% if client.booking_type == 'H' %}
                         <span class="badge badge-hotel">Hotel</span>

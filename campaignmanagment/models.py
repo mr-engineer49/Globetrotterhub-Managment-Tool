@@ -22,12 +22,6 @@ class NewCampaignModel(models.Model):
         ('A', 'Asia'),
     ]
     
-    # PLATFORM_CHOICES = [
-    #     ('F', 'Facebook'),
-    #     ('I', 'Instagram'),
-    #     ('X', 'X (Twitter)'),
-    #     ('T', 'TikTok'),
-    # ]
 
     campaignname = models.CharField(blank=True, max_length=50)
     titlename = models.CharField(blank=True, max_length=50)

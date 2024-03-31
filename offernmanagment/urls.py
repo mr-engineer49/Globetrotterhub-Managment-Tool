@@ -21,5 +21,7 @@ from . import views
 app_name='offernmanagment'
 
 urlpatterns = [
-    path('offer_managment/', views.offers_view, name="offers_form"),
+    path('', views.offers_view, name="offers_form"),
+    path('new/', views.new_offer_view, name="new_offer"),
+    path('<int:pk>-details/', views.offers_detail_view, name="offer_detail"),
 ]

@@ -6,32 +6,9 @@
 
 <div class="container mx-auto mt-8 text-white">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="relative">
-            <h2 class="text-lg font-semibold mb-4">Create New Offer</h2>
-            <form action="/create_offer" method="POST" class="space-y-4">
-                {% csrf_token %}
-                <div>
-                    <label for="destination" class="text-sm">Destination:</label><br>
-                    <input type="text" id="destination" name="destination" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500">
-                </div>
 
-                <div>
-                    <label for="duration" class="text-sm">Duration (in days):</label><br>
-                    <input type="number" id="duration" name="duration" min="1" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500">
-                </div>
-
-                <div>
-                    <label for="price" class="text-sm">Price:</label><br>
-                    <input type="text" id="price" name="price" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500">
-                </div>
-
-                <div>
-                    <label for="inclusions" class="text-sm">Inclusions:</label><br>
-                    <textarea id="inclusions" name="inclusions" rows="4" required class="w-full rounded-md py-2 px-3 bg-gray-800 border border-gray-700 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
-                </div>
-
-                <input type="submit" value="Create Offer" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
-            </form>
+        <div>
+            <a href="{% url 'offernmanagment:new_offer' %}">Add New</a>
         </div>
 
         <div class="relative text-white">
@@ -46,6 +23,35 @@
             </div>
         </div>
     </div>
+
+    <section class="container">
+            <div class="">
+                {% for offer in offers %}
+                <a href="#" class="text-lg flex inline font-semibold text-white">{{ offer.offer_name }}</a>
+                <hr class="my-4">
+                <p class="text-white-700"><strong>Description:</strong>
+                    <span class="px-2 py-1 rounded-full text-sm">
+                        <p>
+                            {{ offer.offer_description }}
+                        </p>
+                    </span>
+                </p>
+                <p class="text-white-700"><strong>Price:</strong></p>
+                <div class="flex">
+                    {{ offer.price }}
+                </div>
+    
+                
+                <!-- Add more campaign details here -->
+                <div class="mt-4">
+                    <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}" class="text-blue-500 hover:underline mr-2">Edit</a>
+                    <a href="{% url 'campaignmanagment:delete_campaign' campaign.id %}" class="text-red-500 hover:underline">Delete</a>
+                </div>
+
+                {% endfor %}
+            </div>
+    </section>
+
 </div>
 
 {% endblock %}
