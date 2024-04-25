@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block user_authenticated %}
+
+
+<script>
+
+    function toggleNavbar() {
+var navbarMenu = document.getElementById("navbarMenu");
+if (navbarMenu.style.display === "block") {
+    navbarMenu.style.display = "none";
+} else {
+    navbarMenu.style.display = "block";
+}
+}
+
+</script>
+
+
+  <!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-toggle" onclick="toggleNavbar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+
+<style>
+    
+    .navbar {
+background-color: #333;
+color: #fff;
+padding: 10px;
+}
+
+.navbar ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+
+.navbar ul li {
+display: inline-block;
+margin-right: 20px;
+}
+
+.navbar-menu {
+display: none;
+}
+
+.navbar-toggle {
+display: none;
+cursor: pointer;
+}
+
+/* Media query for mobile view */
+@media screen and (max-width: 768px) {
+.navbar ul {
+    display: none;
+}
+
+.navbar-toggle {
+    display: block;
+}
+}
+
+</style>
+
+
+{% endblock %}
+
+

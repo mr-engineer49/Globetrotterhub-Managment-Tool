@@ -7,8 +7,8 @@
 <div class="container mx-auto mt-8 text-white">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <div>
-            <a href="{% url 'offernmanagment:new_offer' %}">Add New</a>
+        <div class="flex justify-center">
+            <a class="rounded-full flex justify-center" href="{% url 'offernmanagment:new_offer' %}">Add New</a>
         </div>
 
         <div class="relative text-white">
@@ -22,13 +22,18 @@
                 </ul>
             </div>
         </div>
+        <br>
     </div>
-
+<br>
+<hr>
+<br>
     <section class="container">
-            <div class="">
+        <br>
+            <div class="grid-cols-4 gap-4 grid flex bg-white text-black  h-full">
                 {% for offer in offers %}
-                <a href="#" class="text-lg flex inline font-semibold text-white">{{ offer.offer_name }}</a>
-                <hr class="my-4">
+                <div class="bg-gray-800 text-white rounded">
+                <span class="bg-white text-white">
+                <h1 href="#" class="text-lg font-semibold text-white"><strong>Offer Name:&ensp;</strong>{{ offer.offer_name }}</h1>
                 <p class="text-white-700"><strong>Description:</strong>
                     <span class="px-2 py-1 rounded-full text-sm">
                         <p>
@@ -44,10 +49,11 @@
                 
                 <!-- Add more campaign details here -->
                 <div class="mt-4">
-                    <a href="{% url 'campaignmanagment:edit_campaign' campaign.id %}" class="text-blue-500 hover:underline mr-2">Edit</a>
-                    <a href="{% url 'campaignmanagment:delete_campaign' campaign.id %}" class="text-red-500 hover:underline">Delete</a>
+                    <a href="#" class="text-blue-500 hover:underline mr-2">Edit</a>
+                    <a href="#" class="text-red-500 hover:underline">Delete</a>
                 </div>
-
+            </span>
+        </div>
                 {% endfor %}
             </div>
     </section>

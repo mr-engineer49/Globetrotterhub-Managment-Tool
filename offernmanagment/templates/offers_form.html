@@ -27,8 +27,12 @@
                     {{ offer_form.price }}
                 </div>
                 <div>
-                    <label for="offer_description" class="text-gray-700">Description:</label>
+                    <label for="offer_description" class="text-gray-700 w-full">Description:</label>
                     {{ offer_form.offer_description }}
+                </div>
+                <div>
+                    <label for="offer_description" class="text-gray-700 w-full">Discount:</label>
+                    {{ offer_form.discount }}
                 </div>
                 <div class="flex justify-center">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">Create Offer</button>

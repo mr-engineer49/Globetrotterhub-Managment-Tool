@@ -21,7 +21,7 @@ from . import views
 app_name='clientnmanagment'
 
 urlpatterns = [
-    path('', views.client_managment_view, name="client_form"),
+    path('client-form/', views.client_managment_view, name="client_form"),
     path('new/', views.new_client_view, name="new_client"),
     path('<int:pk>/history/', views.see_history_view, name="see_history"),
 ]

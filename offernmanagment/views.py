@@ -33,7 +33,7 @@ def new_offer_view(request):
             offer.save()
             print("new offer created!")
 
-            return redirect("offernmanagment:offers_form", pk=offer.id)
+            return redirect("offernmanagment:offer_detail", pk=offer.id)
         else:
             print(f"Error creating new offer !!! {offer_form.errors}")
     else:

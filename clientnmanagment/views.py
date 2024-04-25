@@ -14,6 +14,7 @@ def client_managment_view(request):
     } )
 
 
+
 @login_required
 def see_history_view(request, pk):
     client = get_object_or_404(NewClientModel, pk=pk)
@@ -34,7 +35,7 @@ def new_client_view(request):
             client.save()
             print("new client created!")
 
-            return redirect("clientnmanagment:client_form", pk=client.id)
+            return redirect("clientnmanagment:see_history", pk=client.id)
         else:
             print(f"Error creating new client !!! {client_form.errors}")
     else:
