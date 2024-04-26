@@ -6,16 +6,24 @@
 <body class="container bg-white">
     <br>
     <h2 class="text-lg text-white font-semibold mb-4 justify-center flex underline">Dashboard</h2>
+
+    <br>
+<!-- <div class="text-white">
+    <input placeholder="Enter Month" class="text-black" id="bar1" name="bar1"/>
+    <input placeholder="Enter No." class="text-black" id="bar2" name="bar2"/>
+    <button type="button" onclick="update()" class="bg-blue-600 rounded-lg w-28">Continue</button>
+</div> -->
+<br>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white">
         <!-- Chart 1: Bar Chart -->
-        <div class="dashboard-item text-white">
-            <canvas style="color: white;" id="barChart1" width="400" height="200"></canvas>
+        <div class="dashboard-item text-black">
+            <canvas style="color: black;" id="barChart" width="400" height="200"></canvas>
         </div>
-        <!-- Chart 2: Line Chart -->
-        <div class="dashboard-item">
-            <canvas id="lineChart1" width="400" height="200"></canvas>
+        <!-- Chart 3: Line Chart -->
+        <div class="dashboard-item text-black">
+            <canvas style="color: black;" id="lineChart" width="400" height="200"></canvas>
         </div>
-        <!-- Chart 3: Pie Chart -->
+        <!-- Chart 4: Pie Chart -->
         <div class="dashboard-item">
             <canvas id="pieChart1" width="400" height="200"></canvas>
         </div>
@@ -23,85 +31,82 @@
 </body>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Chart 1: Bar Chart
-        var ctx1 = document.getElementById('barChart1').getContext('2d');
-        var barChart = new Chart(ctx1, {
-            type: 'bar',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May'],
+
+    const data = {
+        labels: ['January', 'February', 'March'],
                 datasets: [{
-                    label: 'Campaigns',
-                    data: [1, 38, 65, 81, 150],
+                    label: 'Campaigns Created',
+                    data: [22,13,43],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
+                        'rgba(20, 77, 159, 0.8)'
                     ],
+
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
+                        'rgba(210, 235, 9, 0.8)'
                     ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+                    borderWidth: 2
+                }]      
+    };
 
-        // Chart 2: Line Chart
-        var ctx2 = document.getElementById('lineChart1').getContext('2d');
-        var lineChart = new Chart(ctx2, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May'],
-                datasets: [{
-                    label: 'Sales',
-                    data: [65, 59, 80, 81, 56],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+    const config = {
+        type: 'bar',
+        data,
+        options: {
+            y: {
+                beginAtZero: true
             }
-        });
+        }
+    };
 
-        // Chart 3: Pie Chart
-        var ctx3 = document.getElementById('pieChart1').getContext('2d');
-        var pieChart = new Chart(ctx3, {
-            type: 'pie',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+    const barChart = new Chart(
+        document.getElementById('barChart'),
+        config
+    );
+
+    // function update(){
+    //     const bar1 = document.getElementById('bar1');
+    //     // const bar2 = document.getElementById('bar2');
+
+    //     barChart.data.labels.push(bar1.value)
+    //     barChart.data.datasets[0].data.push(bar2.value)
+    //     barChart.update();
+
+    // }
+
+    const data1 = {
+        labels: ['January', 'February', 'March'],
                 datasets: [{
-                    label: 'My Dataset',
-                    data: [12, 19, 3, 5, 2],
+                    label: 'Clients Created',
+                    data: [22,13,43],
                     backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(153, 102, 255)'
-                    ]
-                }]
+                        'rgba(20, 77, 159, 0.8)'
+                    ],
+
+                    borderColor: [
+                        'rgba(210, 235, 9, 0.8)'
+                    ],
+                    borderWidth: 2
+                }]      
+    };
+
+    const config1 = {
+        type: 'line',
+        data: data1,
+        options: {
+            y: {
+                beginAtZero: true
             }
-        });
-    });
+        }
+    };
+
+
+const lineChart = new Chart(
+    document.getElementById('lineChart'),
+    config1
+);
+
+
+
 </script>
 
 {% endblock %}
