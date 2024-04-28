@@ -39,45 +39,45 @@
     }
 </style>
 
-<body class="text-white">
+<body class="text-black">
 
-<div class="container text-white">
-    <h2 class="text-white">User Profile</h2>
+<div class="container text-black">
+    <h2 class="text-black">User Profile</h2>
 
-    <div class="section text-white">
+    <div class="section text-black">
         <h3>User Information</h3>
         <br>
         <form class="text-black" action="/update_user_info" method="POST">
-            <label class="text-white" for="username">Username:</label><br>
+            <label class="text-black" for="username">Username:</label><br>
             <input type="text" id="username" name="username" value="{{ user_name }}" disabled><br>
 
-            <label class="text-white" for="email">Email:</label><br>
+            <label class="text-black" for="email">Email:</label><br>
             <input type="email" id="email" name="email" value="{{ user_email }}"><br>
 
-            <label class="text-white" for="firstname">First Name:</label><br>
+            <label class="text-black" for="firstname">First Name:</label><br>
             <input type="text" id="firstname" name="firstname" value="{{ first_name }}"><br>
 
-            <label class="text-white" for="lastname">Last Name:</label><br>
+            <label class="text-black" for="lastname">Last Name:</label><br>
             <input type="text" id="lastname" name="lastname" value="{{ last_name }}"><br>
 
-            <label class="text-white" for="phone">Phone:</label><br>
+            <label class="text-black" for="phone">Phone:</label><br>
             <input type="text" id="phone" name="phone" value="{{ phone }}"><br>
 
             <input type="submit" value="Update Information">
         </form>
     </div>
 
-    <div class="section text-white">
+    <div class="section text-black">
         <h3>Preferences</h3>
         <br>
         <form class="text-black" action="/update_preferences" method="POST">
-            <label class="text-white" for="language">Language:</label><br>
+            <label class="text-black" for="language">Language:</label><br>
             <select id="language" name="language">
                 <option value="english">English</option>
                 <option value="spanish">Spanish</option>
             </select><br>
 
-            <label class="text-white" for="timezone">Timezone:</label><br>
+            <label class="text-black" for="timezone">Timezone:</label><br>
             <select id="timezone" name="timezone">
                 <option value="utc">UTC</option>
                 <option value="est">EST</option>
@@ -89,38 +89,38 @@
         </form>
     </div>
 
-    <div class="section text-white">
-        <h3 class="text-white">Change Password</h3>
+    <div class="section text-black">
+        <h3 class="text-black">Change Password</h3>
         <br>
         <form class="text-black" action="/change_password" method="POST">
-            <label class="text-white" for="current_password">Current Password:</label><br>
+            <label class="text-black" for="current_password">Current Password:</label><br>
             <input type="password" id="current_password" name="current_password" value="{{ user_password }}"><br>
 
-            <label class="text-white" for="new_password">New Password:</label><br>
+            <label class="text-black" for="new_password">New Password:</label><br>
             <input type="password" id="new_password" name="new_password"><br>
 
-            <label class="text-white" for="confirm_password">Confirm Password:</label><br>
+            <label class="text-black" for="confirm_password">Confirm Password:</label><br>
             <input type="password" id="confirm_password" name="confirm_password"><br>
 
             <input type="submit" value="Change Password">
         </form>
     </div>
 
-    <div class="section text-white">
+    <div class="section text-black">
         <h3>Account Deactivation</h3>
         <br>
         <form class="text-black" action="/deactivate_account" method="POST">
-            <p class="text-white">Are you sure you want to deactivate your account?</p>
+            <p class="text-black">Are you sure you want to deactivate your account?</p>
             <input type="submit" value="Deactivate Account">
         </form>
     </div>
 
-    <div class="section text-white">
+    <div class="section text-black">
         <h3>Subscription</h3>
         <br>
-        <p class="text-white">Current Plan: Premium</p>
-        <p class="text-white">Next Billing Date: January 1, 2023</p>
-        <a href="#" class="text-white">Upgrade Plan</a>
+        <p class="text-black">Current Plan: Premium</p>
+        <p class="text-black">Next Billing Date: January 1, 2023</p>
+        <a href="#" class="text-black">Upgrade Plan</a>
     </div>
 </div>
 

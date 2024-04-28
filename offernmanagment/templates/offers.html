@@ -2,16 +2,16 @@
 
 {% block index %}
 
-<body class="text-white">
+<body class="text-black">
 
-<div class="container mx-auto mt-8 text-white">
+<div class="container mx-auto mt-8 text-black">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <div class="flex justify-center">
-            <a class="rounded-full flex justify-center" href="{% url 'offernmanagment:new_offer' %}">Add New</a>
+        <div class="justify-center flex inline">
+            <a class="inline" href="{% url 'offernmanagment:new_offer' %}"><img class="grid" width="48" height="48" src="https://img.icons8.com/color/48/add--v1.png" alt="add--v1"/></a>
         </div>
 
-        <div class="relative text-white">
+        <div class="relative text-black">
             <div class="mt-8 md:mt-0">
                 <p class="text-sm font-semibold mb-2">Helpful Tips:</p>
                 <ul class="list-disc ml-6">
@@ -31,17 +31,17 @@
         <br>
             <div class="grid-cols-4 gap-4 grid flex bg-white text-black  h-full">
                 {% for offer in offers %}
-                <div class="bg-gray-800 text-white rounded">
-                <span class="bg-white text-white">
-                <h1 href="#" class="text-lg font-semibold text-white"><strong>Offer Name:&ensp;</strong>{{ offer.offer_name }}</h1>
-                <p class="text-white-700"><strong>Description:</strong>
+                <div class="bg-black-800 text-black rounded">
+                <span class="bg-white text-black">
+                <h1 href="#" class="text-lg font-semibold text-black"><strong>Offer Name:&ensp;</strong>{{ offer.offer_name }}</h1>
+                <p class="text-black-700"><strong>Description:</strong>
                     <span class="px-2 py-1 rounded-full text-sm">
                         <p>
                             {{ offer.offer_description }}
                         </p>
                     </span>
                 </p>
-                <p class="text-white-700"><strong>Price:</strong></p>
+                <p class="text-black-700"><strong>Price:</strong></p>
                 <div class="flex">
                     {{ offer.price }}
                 </div>

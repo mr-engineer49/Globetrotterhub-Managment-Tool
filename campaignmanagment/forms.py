@@ -3,8 +3,8 @@ from django import forms
 
 
 
-TEXT_CLASSES = "text-white"
-INPUT_CLASSES = "py-2 px-8 rounded-2xl border bg-gray-700"
+TEXT_CLASSES = "text-black"
+INPUT_CLASSES = "py-2 px-8 rounded-2xl border bg-gray-700 text-white"
 SELECT_CLASSES = "py-2 px-12 rounded-2xl border bg-gray-700"
 
 

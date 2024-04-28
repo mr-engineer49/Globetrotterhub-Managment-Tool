@@ -5,12 +5,12 @@
 {% block content %}
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
-        <h1 class="text-2xl font-bold mb-4 text-white">Add Client Form</h1>
+        <h1 class="text-2xl font-bold mb-4 text-black">Add Client Form</h1>
 
         <form class="text-white" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-white">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-black">
                 <div>
                     <label for="id_fullname" class="block font-semibold mb-1">Full Name</label>
                     {{ client_form.fullname }}

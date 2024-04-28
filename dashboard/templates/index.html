@@ -3,7 +3,7 @@
 {% block user_authenticated %}
 
     <!-- Navigation -->
-    <nav class="py-2 px-4 bg-gradient-to-r from-blue-700 to-green-700 dark:bg-gray-800 rounded-lg">
+    <nav class="px-2 bg-gradient-to-r from-blue-700 to-green-700 dark:bg-gray-800 py-1">
         <div class="container mx-auto flex justify-center items-center">
             <div class="flex-shrink-0">
             <!-- Hamburger menu icon for mobile -->
@@ -16,9 +16,9 @@
             </div>
             <div id="mobile-menu" class="hidden md:flex items-center space-x-4 justify-center">
                 <!-- Navigation Links -->
-                <ul class="flex space-x-4 justify-center text-center">
+                <ul class="flex space-x-6 justify-center text-center">
                     <li class="text-white">
-                        <a href="{% url 'campaignmanagment:campaigns_form' %}" class="text-white hover:text-gray-300">Campaigns</a>
+                        <a href="{% url 'campaignmanagment:campaigns_form' %}" class="text-white border-none hover:text-gray-300">Campaigns</a>
                     </li>
                     <li class="text-white">
                         <a href="{% url 'clientnmanagment:client_form' %}" class="text-white hover:text-gray-300">Clients</a>
@@ -33,26 +33,19 @@
                         <a href="{% url 'reportsandanalytics:reports_form' %}" class="text-white hover:text-gray-300">Reports</a>
                     </li>
                 </ul>
-                <p class="flex text-white">|</p>
                 <!-- Profile and Logout Links -->
-                <div class="flex items-center space-x-4">
-                    <div>
-                        <a href="{% url 'dashboard:profile' %}" class="text-white flex items-center space-x-2">
+                    <ol class="inline flex space-x-4">
+                        <a href="{% url 'dashboard:profile' %}" class="text-white flex items-center inline">
                             <span>Hi, {{ request.user.username | title }}</span>
                             <img src="https://img.icons8.com/material/24/user--v1.png" alt="User Icon" class="w-6 h-6" />
                         </a>
-                    </div>
-                    <p class="flex text-white">|</p>
-                    <div>
-                        <a href="{% url 'sms:sms_form' %}" class="text-white flex items-center space-x-2">
+                        <a href="{% url 'sms:sms_form' %}" class="text-white flex items-center">
                             <img src="https://img.icons8.com/material/24/chat--v4.png" alt="Chat Icon" class="w-6 h-6" />
                             <span>Chats</span>
                         </a>
-                    </div>
-                    <div>
-                        <a href="{% url 'auth:logout' %}" class="text-white bg-red-600 px-4 py-2 rounded-full hover:bg-red-700">Logout</a>
-                    </div>
-                </div>
+                        <a href="{% url 'auth:logout' %}" class="text-white bg-red-600 px-4 rounded-full hover:bg-red-700">Logout</a>
+                    </ol>
+                            
             </div>
         </div>
     </nav>
