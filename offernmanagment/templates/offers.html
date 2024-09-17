@@ -27,10 +27,10 @@
 <br>
 <hr>
 <br>
-    <section class="container">
+    <section class="container justify-center grid grid-cols-4 inline grid flex bg-gray-300 gap-2 text-black">
         <br>
-            <div class="grid-cols-4 gap-4 grid flex bg-white text-black  h-full">
-                {% for offer in offers %}
+        {% for offer in offers %}
+            <div class="bg-white flex justify-center">
                 <div class="bg-black-800 text-black rounded">
                 <span class="bg-white text-black">
                 <h1 href="#" class="text-lg font-semibold text-black"><strong>Offer Name:&ensp;</strong>{{ offer.offer_name }}</h1>
@@ -54,8 +54,9 @@
                 </div>
             </span>
         </div>
-                {% endfor %}
+                
             </div>
+            {% endfor %}
     </section>
 
 </div>
