@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import  login_required
+from django.contrib import messages
 
 
 # Create your views here.
@@ -16,6 +17,7 @@ def index_client(request):
 @login_required
 def index_client_form(request):
     if request.user.is_authenticated:
+        messages.info(request, "You are now logged in.")
         return render(request, 'dashboard.html', context={
 
         })

@@ -56,6 +56,7 @@ def login_view(request):
 
 def logout_view(request):
 	logout = Session.objects.all().delete()
+	messages.info(request, "You are now Signed out from the Platform, Log in again to access the Platform !")
 	return render (request=request, template_name='homepage.html', context={
 		'logout': logout
 	})
